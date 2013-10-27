@@ -18,7 +18,7 @@ public class Main {
     /*
     * testing of users login
     * */
-    public static void main(String args[]) throws AuthException {
+    public static void main(String args[])  {
         List<User> users = new ArrayList<>();
         users.add(0, new User("login1","pass1"));
         users.add(1, new User("login1","pass1"));
@@ -36,23 +36,14 @@ public class Main {
         try{
             user.auth(users);
             System.out.println("User '"+user.login+"' successfully logined");
-        } catch (WrongCredentialsException e) {
-            System.out.println("Caught " + e);
-        } catch (UserNotFoundException e) {
-            System.out.println("Caught " + e);
-        } catch (WrongPasswordException e) {
+        } catch (AuthException e) {
             System.out.println("Caught " + e);
         }
-
         System.out.println("\nTry to login user with login: '"+user1.login+"', and pass '"+user1.password+"'");
         try{
             user1.auth(users);
             System.out.println("User '"+user1.login+"' successfully logined");
-        } catch (WrongCredentialsException e) {
-            System.out.println("Caught " + e);
-        } catch (UserNotFoundException e) {
-            System.out.println("Caught " + e);
-        } catch (WrongPasswordException e) {
+        } catch (AuthException e) {
             System.out.println("Caught " + e);
         }
 
@@ -60,11 +51,7 @@ public class Main {
         try{
             user2.auth(users);
             System.out.println("User '"+user2.login+"' successfully logined");
-        } catch (WrongCredentialsException e) {
-            System.out.println("Caught " + e);
-        } catch (UserNotFoundException e) {
-            System.out.println("Caught " + e);
-        } catch (WrongPasswordException e) {
+        } catch (AuthException e) {
             System.out.println("Caught " + e);
         }
     }
