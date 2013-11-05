@@ -89,7 +89,7 @@ public class Main {
                         if(testManager.getCategories().size() != 0){
                             Collection<String> categories = testManager.getCategories();
                             System.out.print("Tasks categories : ");
-                            for(Object cat: categories){
+                            for(String cat: categories){
                                 System.out.print(cat+";  ");
                             }
                             System.out.println();
@@ -100,10 +100,10 @@ public class Main {
                     case 4:
                         Map<String, List<Task>> tasksByCategories = testManager.getTasksByCategories();
                         if(tasksByCategories.size() != 0){
-                            for(Object val: tasksByCategories.keySet()){
+                            for(String val: tasksByCategories.keySet()){
                                 System.out.print("Tasks in category '"+val+"' :\t\t");
-                                for(Object task: tasksByCategories.get(val)){
-                                    System.out.print(((Task)task).getDescription()+";  ");
+                                for(Task task: tasksByCategories.get(val)){
+                                    System.out.print(task.getDescription()+";  ");
                                 }
                                 System.out.println();
                             }
@@ -117,8 +117,8 @@ public class Main {
                         List<Task> tasksListWithSameCategory = testManager.getTasksByCategory(taskGroup);
                         if(tasksListWithSameCategory.size() != 0){
                             System.out.print("Tasks in group '"+taskGroup+"' : ");
-                            for(Object cat: tasksListWithSameCategory){
-                                System.out.print(((Task)cat).getDescription()+";  ");
+                            for(Task cat: tasksListWithSameCategory){
+                                System.out.print(cat.getDescription()+";  ");
                             }
                             System.out.print("\n");
                         } else {
@@ -129,8 +129,8 @@ public class Main {
                         List<Task> tasksListOnToday = testManager.getTasksForToday();
                         if(tasksListOnToday.size() != 0){
                             System.out.print("Tasks for today:  ");
-                            for(Object cat: tasksListOnToday){
-                                System.out.print(((Task)cat).getDescription() + ";  ");
+                            for(Task cat: tasksListOnToday){
+                                System.out.print(cat.getDescription() + ";  ");
                             }
                             System.out.print("\n");
                         } else {

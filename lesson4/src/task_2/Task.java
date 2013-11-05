@@ -27,7 +27,7 @@ package task_2;
 *       compareTo : compare two Task object, return -1 or 1
 *
 * */
-public class Task implements Comparable{
+public class Task{
     private String category;
     private String description;
 
@@ -57,16 +57,16 @@ public class Task implements Comparable{
      *      return EQUAL or NOT EQUAL
     */
     @Override
-    public int compareTo(Object o) {
+    public boolean equals(Object o) {
         Task task = (Task) o;
         if(task.getCategory().compareToIgnoreCase(this.category) == 0) {
             if(task.getDescription().compareToIgnoreCase(this.description) == 0) {
-                return 1;
+                return true;
             } else {
-                return -1;
+                return false;
             }
         } else {
-                return -1;
+                return false;
         }
     }
 }
