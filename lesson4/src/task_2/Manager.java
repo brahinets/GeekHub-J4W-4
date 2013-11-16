@@ -66,8 +66,8 @@ public class Manager implements TaskManager{
     @Override
     public void removeTask(Date date) {
         if(this.tasks.containsKey(date)) {
-                this.tasks.remove(date);
-                System.out.println("Task removed successfully\n");
+            this.tasks.remove(date);
+            System.out.println("Task removed successfully\n");
         } else {
             System.out.println("No tasks on this date\n");
         }
@@ -104,11 +104,8 @@ public class Manager implements TaskManager{
     @Override
     public Map<String, List<Task>> getTasksByCategories() {
         Map<String, List<Task>> tasksByCategories = new HashMap<String, List<Task>>();
-        List<Task> tasksListWithSameCategory;
-        System.out.println();
         for(String cat: getCategories()){
-            tasksListWithSameCategory = getTasksByCategory(cat);
-            tasksByCategories.put(cat, tasksListWithSameCategory);
+            tasksByCategories.put(cat, getTasksByCategory(cat));
         }
         return tasksByCategories;
     }
@@ -126,10 +123,10 @@ public class Manager implements TaskManager{
     public List<Task> getTasksByCategory(String category) {
         List<Task> tasksListWithSameCategory = new ArrayList<Task>();
         List<Date> tasksListWithSameCategoryDate = new ArrayList<Date>();
-        for(Date val: tasks.keySet()){
-            if((category).compareTo(tasks.get(val).getCategory()) == 0){
-                tasksListWithSameCategory.add(tasks.get(val));
-                tasksListWithSameCategoryDate.add(val);
+        for(Map.Entry<Date, Task> val: tasks.entrySet()){
+            if(category.equals(tasks.get(val).getCategory())){
+                tasksListWithSameCategory.add(val.getValue());
+                tasksListWithSameCategoryDate.add(val.getKey());
             }
         }
         tasksListWithSameCategory = sortListByDates(tasksListWithSameCategory, tasksListWithSameCategoryDate);
