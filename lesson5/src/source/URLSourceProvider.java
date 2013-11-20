@@ -36,14 +36,22 @@ public class URLSourceProvider implements SourceProvider {
 
     @Override
     public String load(String pathToSource) throws IOException {
-        String text = "";
+        StringBuilder text = new StringBuilder();
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(new URL(pathToSource).openStream()));
-        while ((line = reader.readLine()) != null) {
-            text = text + line + '\n';
+
+        try {
+            while ((line = reader.readLine()) != null) {
+                text.append(line);
+                text.append("\n");
+            }
+        } catch (IOException ex){
         }
-        if(text.isEmpty())
+
+        if(text.toString().isEmpty()) {
             throw new IOException();
-        return text;
+        }
+
+        return text.toString();
     }
 }

@@ -42,14 +42,7 @@ public class Translator {
      * @throws IOException
      */
     public String translate(String original) throws IOException {
-        String translatedText = "";
-        String line;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new URL(prepareURL(original)).openStream()));
-        while ((line = reader.readLine()) != null) {
-            translatedText  = translatedText + line + '\n';
-        }
-
-        return parseContent(translatedText);
+        return parseContent(urlSourceProvider.load(prepareURL(original)));
     }
 
 

@@ -38,14 +38,23 @@ public class FileSourceProvider implements SourceProvider {
 
     @Override
     public String load(String pathToSource) throws IOException{
-        String text = "";
+        StringBuilder text = new StringBuilder();
         String line;
 
-        BufferedReader br = new BufferedReader(new FileReader(pathToSource));
-        while ((line = br.readLine()) != null)
-            text = text + line + '\n';
-        if(text.isEmpty())
+        BufferedReader reader = new BufferedReader(new FileReader(pathToSource));
+
+        try {
+            while ((line = reader.readLine()) != null) {
+                text.append(line);
+                text.append("\n");
+            }
+        } catch (IOException ex){
+        }
+
+        if(text.toString().isEmpty()){
             throw new IOException();
-        return text;
+        }
+
+        return text.toString();
     }
 }
