@@ -27,7 +27,7 @@ public class CollectionAdapter implements JsonDataAdapter<Collection> {
         for (Object key : c) {
             ja.put(JsonSerializer.serialize(key));
         }
-        // why we can't 'return new JSONArray(c);' ???, result will be same
+        /* why we can't 'return new JSONArray(c);' ???, result will be same */
         return ja;
     }
 }

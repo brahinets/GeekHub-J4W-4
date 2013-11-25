@@ -31,7 +31,7 @@ public class MapAdapter implements JsonDataAdapter<Map> {
         for (Object key : map.keySet()) {
             m.put(key.toString(), JsonSerializer.serialize(map.get(key)));
         }
-        // why we can't 'return new JSONObject(map);'  ???, result will be same
+        /* why we can't 'return new JSONObject(map);'  ???, result will be same */
         return m;
     }
 }
