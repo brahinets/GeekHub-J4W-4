@@ -95,11 +95,7 @@ public class JsonSerializer {
                 if(f.isAnnotationPresent(UseDataAdapter.class)){
                     jo.put(f.getName(), f.getAnnotation(UseDataAdapter.class).value().newInstance().toJson(f.get(o))); /* if field of the object has dataAdapter annotation */
                 } else {
-                    if(simpleTypes.contains(f.get(o).getClass())){ /* if field of the object is 'Simple' type (Simple types described earlier) */
-                        jo.put(f.getName(),f.get(o));
-                    } else {
-                        jo.put(f.getName(), serialize(f.get(o))); /* if field of the object is object again */
-                    }
+                    jo.put(f.getName(), serialize(f.get(o))); /* if field don't have annotation */
                 }
             }
         }
