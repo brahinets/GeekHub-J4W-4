@@ -11,7 +11,9 @@
 
 package org.geekhub;
 
+import org.geekhub.objects.Car;
 import org.geekhub.objects.Cat;
+import org.geekhub.objects.Human;
 import org.geekhub.objects.User;
 import org.geekhub.storage.DatabaseStorage;
 import org.geekhub.storage.Storage;
@@ -25,6 +27,9 @@ public class Test {
         Connection connection = createConnection("root", "", "geekdb");
 
         Storage storage = new DatabaseStorage(connection);
+
+
+            /* start test with USER objects */
         List<Cat> cats = storage.list(Cat.class);
         for (Cat cat : cats) {
             storage.delete(cat);
@@ -41,7 +46,10 @@ public class Test {
 
         cats = storage.list(Cat.class);
         if (cats.size() != 20) throw new Exception("Number of cats in storage should be 20!");
+            /* end test with CAT objects */
 
+
+            /* start test with USER objects */
         User user = new User();
         user.setAdmin(true);
         user.setAge(23);
@@ -63,6 +71,52 @@ public class Test {
         User user3 = storage.get(User.class, user.getId());
 
         if (user3 != null) throw new Exception("User should be deleted!");
+            /* end test with USER objects */
+
+
+            /* start test with HUMAN objects */
+        Human human = new Human();
+        human.setAge(10);
+        human.setName("John");
+        human.setWeight(123);
+        storage.save(human);
+
+        Human human1 = storage.get(Human.class, human.getId());
+        if (!human1.getName().equals(human.getName())) throw new Exception("Human should be equals!");
+        storage.delete(human1);
+
+        Human human3 = new Human();
+        human3.setAge(78);
+        human3.setName("Lil");
+        human3.setWeight(97);
+        storage.save(human3);
+
+        storage.delete(human);
+        human3 = storage.get(Human.class, human.getId());
+        if (human3 != null) throw new Exception("Human should be deleted!");
+            /* end test with HUMAN objects */
+
+
+            /* start test with CAR objects */
+        Car car = new Car();
+        car.setColor("Red");
+        car.setConcern("BMW");
+        car.setPassengers(4);
+        car.setMaxSpeed(240);
+        storage.save(car);
+
+        Car car1 = new Car("Audi", "White", 280, 2);
+        storage.save(car1);
+
+        Car car2 = storage.get(Car.class, car.getId());
+        car2 = car1;
+        if (!car2.getConcern().equals(car1.getConcern())) throw new Exception("Cars should be equal!");
+        storage.delete(car1);
+
+        car2 = storage.get(Car.class, car.getId());
+        if (!car2.getConcern().equals(car.getConcern())) throw new Exception("Cars should be equal!");
+            /* end test with CAR objects */
+
 
         System.out.println("OK");
         connection.close();
