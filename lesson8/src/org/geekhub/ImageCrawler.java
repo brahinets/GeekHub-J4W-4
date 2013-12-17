@@ -34,6 +34,8 @@ public class ImageCrawler {
     public void downloadImages(String urlToPage) throws IOException {
         Page curPage = new Page(new URL(urlToPage));
         Collection<URL> linksToImages = curPage.getImageLinks();
+        //Collection<URL> links = curPage.getLinks();
+        //linksToImages.addAll(links);
 
         for(URL imageUrl: linksToImages )     {
             if(isImageURL(imageUrl)){
