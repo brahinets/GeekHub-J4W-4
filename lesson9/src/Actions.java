@@ -8,14 +8,14 @@ import java.util.Date;
 /**
  * Created by Yarik on 25.01.14.
  *
- * Realizing possible actions with file commander
+ * Realizing possible actions with file explorer
  *
  */
 public class Actions {
     private HttpServletRequest request;
     private HttpServletResponse response;
     private PrintWriter out;
-    private String rootDir = "c:/";
+    private String rootDir;
     private String path;
 
     public Actions (HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -23,6 +23,7 @@ public class Actions {
         this.response =  response;
         this.out = response.getWriter();
         this.path = request.getParameter("path");
+        this.rootDir = request.getServletContext().getRealPath("/");
     }
 
 
@@ -49,7 +50,6 @@ public class Actions {
             path = rootDir;
         }
 
-        printLinksToAllDrives();
         printLinkToParentDirectory();
 
         if(request.getParameter("action") == null) {
@@ -243,7 +243,8 @@ public class Actions {
 
     private void printLinkToParentDirectory() throws IOException {
         File folder = new File(path);
-        if(folder.getParent() != null && !folder.equals(rootDir)){
+
+        if(folder.getParent() != null && !(folder.getAbsolutePath()+"\\").equals(rootDir)){
             out.print("<br><a href=\"?path=" + folder.getParent() + "\"> ...GO BACK... </a><br><br>");
         }
     }

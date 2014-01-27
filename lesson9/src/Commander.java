@@ -3,6 +3,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -27,6 +28,9 @@ public class Commander extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         Actions action = new Actions(request, response);
+        System.out.println(request.getPathInfo());
+        System.out.println(request.getServletContext().getContextPath());
+        System.out.println(request.getServletContext().getRealPath("/"));
 
         action.doWork();
     }
