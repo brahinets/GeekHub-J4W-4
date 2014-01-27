@@ -23,7 +23,7 @@ public class Actions {
         this.response =  response;
         this.out = response.getWriter();
         this.path = request.getParameter("path");
-        this.rootDir = "C:/";
+        this.rootDir = request.getServletContext().getRealPath("/");
     }
 
 
@@ -50,7 +50,6 @@ public class Actions {
             path = rootDir;
         }
 
-        printLinksToAllDrives();
         printLinkToParentDirectory();
 
         if(request.getParameter("action") == null) {

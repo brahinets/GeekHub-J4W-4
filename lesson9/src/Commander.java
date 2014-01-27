@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by Yarik on 25.01.14.
  *
- * Simple File Explorer via Servlet (Main class)  -  FULL PC
+ * Simple File Explorer via Servlet (Main class)  -  ONLY SERVER
  *
  * possible actions :
  *      - print list of FILES and DIRS in some directory (PATH)
