@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by Yarik on 25.01.14.
  *
- * Simple File Explorer via Servlet (Main class)
+ * Simple File Explorer via Servlet (Main class)  -  FULL PC
  *
  * possible actions :
  *      - print list of FILES and DIRS in some directory (PATH)
@@ -28,9 +28,6 @@ public class Commander extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         Actions action = new Actions(request, response);
-        System.out.println(request.getPathInfo());
-        System.out.println(request.getServletContext().getContextPath());
-        System.out.println(request.getServletContext().getRealPath("/"));
 
         action.doWork();
     }
