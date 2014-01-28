@@ -2,7 +2,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.URLEncoder;
+import java.net.URLDecoder;
 import java.util.Date;
 
 /**
@@ -12,18 +12,22 @@ import java.util.Date;
  *
  */
 public class Actions {
+    private final boolean isOnlyServerFolder;
     private HttpServletRequest request;
     private HttpServletResponse response;
     private PrintWriter out;
-    private String rootDir;
+    private String rootDir = "C:/";
     private String path;
 
-    public Actions (HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public Actions (HttpServletRequest request, HttpServletResponse response, boolean isOnlyServerFolder) throws IOException {
         this.request =  request;
         this.response =  response;
         this.out = response.getWriter();
         this.path = request.getParameter("path");
-        this.rootDir = request.getServletContext().getRealPath("/");
+        this.isOnlyServerFolder = isOnlyServerFolder;
+        if(isOnlyServerFolder){
+            this.rootDir = request.getServletContext().getRealPath("/");
+        }
     }
 
 
@@ -36,39 +40,45 @@ public class Actions {
      */
     public void doWork() throws ServletException, IOException {
         String title = "Commander";
+        String action = request.getParameter("action");
 
         out.print("<!DOCTYPE html>" +
-                    "<html>" +
-                        "<head>" +
-                            "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">" +
-                            "<title>" + title + "</title>" +
-                        "</head>" +
-                        "<body>"
+                "<html>" +
+                    "<head>" +
+                        "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">" +
+                        "<title>" + title + "</title>" +
+                    "</head>" +
+                    "<body>"
         );
 
-        if(path == null || path.length()==0 || !new File(path).exists()){
-            path = rootDir;
+        if(this.path == null || !new File(this.path).exists()){
+            this.path = rootDir;
+        }
+
+
+        if(action == null) {
+            action = "open";
+        }
+
+        if(!isOnlyServerFolder){
+            printLinksToAllDrives();
         }
 
         printLinkToParentDirectory();
 
-        if(request.getParameter("action") == null) {
-            show();
-        } else {
-            switch (request.getParameter("action")) {
-                case  "createFile"  :
-                    FileUtils.createFile(path, request.getParameter("newFileName"));
-                    response.sendRedirect("/commander?path=" + path);
-                    break;
-                case  "createDir"  :
-                    FileUtils.createDir(path, request.getParameter("newFileName"));
-                    response.sendRedirect("/commander?path=" + path);
-                    break;
-                case  "delete"  : delete(); break;
-                case  "edit"    : editFile(); break;
-                case  "open"    : show();   break;
-                default         : show();   break;
-            }
+        switch (action) {
+            case  "createFile"  :
+                FileUtils.createFile(this.path, request.getParameter("newFileName"));
+                response.sendRedirect("/commander?path=" + Utils.encodeURL(this.path));
+                break;
+            case  "createDir"  :
+                FileUtils.createDir(this.path, request.getParameter("newDirName"));
+                response.sendRedirect("/commander?path=" + Utils.encodeURL(this.path));
+                break;
+            case  "delete"  : delete(); break;
+            case  "edit"    : editFile(); break;
+            case  "open"    : show();   break;
+            default         : show();   break;
         }
 
         out.print(    "</body>" +
@@ -88,7 +98,7 @@ public class Actions {
         File folder = new File(path);
 
         /* if it readable file (and not directory), then return it's content */
-        if(!(new File(path)).isDirectory()){
+        if(!folder.isDirectory()){
             out.print(FileUtils.readFileAndAddHTMLtags(path));
             return;
         }
@@ -97,64 +107,71 @@ public class Actions {
         printDirCreationForm();
 
         /* else print content of directory */
-        /* firstly print all directories */
-        out.print("<table>" +
-                "<tr>" +
+        if(FileUtils.isFolderEmpty(folder)){
+            File[] folderContent = folder.listFiles();
+
+            /* firstly print all directories */
+            out.print("<table>" +
+                    "<tr>" +
                     "<td>Name</td>" +
                     "<td>Size</td>" +
                     "<td>Last Modified</td>"+
                     "<td></td>" + /* for remove icon*/
                     "<td></td>" + /* for edit icon*/
-                "</tr>"
-        );
-        for (File exemplar : folder.listFiles()) {
-            if(exemplar.isDirectory() && exemplar.list()!=null){ // check for NULL, because not work with DocANDsettings and SysVolumeInfo
-                out.print("<tr>" +
+                    "</tr>"
+            );
+            for (File exemplar : folderContent) {
+                if(exemplar.isDirectory()){
+                    out.print("<tr>" +
                             "<td>" +
-                                "<a href=commander?path=" + Utils.encodeText(exemplar.getAbsolutePath()) + "&action=open>" + "<b>" + exemplar.getName() + "</b></a>" +
+                            "<a href=commander?path=" + Utils.encodeURL(exemplar.getAbsolutePath()) + "&action=open>" + "<b>" + exemplar.getName() + "</b></a>" +
                             "</td>" +
                             "<td>" +
-                                "DIR" +
+                            "DIR" +
                             "</td>" +
                             "<td>" +
-                                new Date(exemplar.lastModified()) +
+                            new Date(exemplar.lastModified()) +
                             "</td>" +
                             "<td>" +
-                                "<a href=commander?path=" + Utils.encodeText(exemplar.getAbsolutePath()) + "&action=delete>" + "<img src=\"img/delete.png\"  width=\"20px\" height=\"20px\"/>" + "</a>" +
+                            "<a href=commander?path=" + Utils.encodeURL(exemplar.getAbsolutePath()) + "&action=delete>" + "<img src=\"img/delete.png\"  width=\"20px\" height=\"20px\"/>" + "</a>" +
                             "</td>" +
-                        "</tr>");
+                            "</tr>");
+                }
             }
-        }
 
-        /* secondly print all files */
-        for (File exemplar : folder.listFiles()) {
-            String sizeType = "KB";
+            /* secondly print all files */
+            for (File exemplar : folderContent) {
+                String sizeType = "KB";
 
-            if(exemplar.isFile()){
-                out.print("<tr>" +
+                if(exemplar.isFile()){
+                    out.print("<tr>" +
                             "<td>" +
-                                "<a href=commander?path=" + Utils.encodeText(exemplar.getAbsolutePath()) + "><i>" + exemplar.getName() + "</i></a>" +
+                            "<a href=commander?path=" + Utils.encodeURL(exemplar.getAbsolutePath()) + "><i>" + exemplar.getName() + "</i></a>" +
                             "</td>" +
                             "<td>" +
-                                FileUtils.getFileSize(exemplar, sizeType) + " " + sizeType + "      " +
+                            FileUtils.getFileSize(exemplar.getAbsolutePath(), sizeType) + " " + sizeType + "      " +
                             "</td>" +
                             "<td>" +
-                                new Date(exemplar.lastModified()) +
+                            new Date(exemplar.lastModified()) +
                             "</td>" +
                             "<td>" +
-                                "<a href=commander?path=" + Utils.encodeText(exemplar.getAbsolutePath()) + "&action=delete>" + "<img src=\"img/delete.png\"  width=\"20px\" height=\"20px\"/>" + "</a>" +
-                            "</td>"
-                );
-                if(FileUtils.isEditable(exemplar.getAbsolutePath())){
-                    out.print("<td>" +
-                                "<a href=commander?path=" + Utils.encodeText(exemplar.getAbsolutePath()) + "&action=edit>" + "<img src=\"img/edit.png\"  width=\"20px\" height=\"20px\"/>" + "</a>" +
+                            "<a href=commander?path=" + Utils.encodeURL(exemplar.getAbsolutePath()) + "&action=delete>" + "<img src=\"img/delete.png\"  width=\"20px\" height=\"20px\"/>" + "</a>" +
                             "</td>"
                     );
+                    if(FileUtils.isFileEditable(exemplar.getAbsolutePath())){
+                        out.print("<td>" +
+                                "<a href=commander?path=" + Utils.encodeURL(exemplar.getAbsolutePath()) + "&action=edit>" + "<img src=\"img/edit.png\"  width=\"20px\" height=\"20px\"/>" + "</a>" +
+                                "</td>"
+                        );
+                    }
+                    out.print("</tr>");
                 }
-                out.print("</tr>");
             }
+            out.print("</table>");
+        } else {
+            out.print(Utils.makeMessage("Folder '" + path + "' is empty"))  ;
         }
-        out.print("</table>");
+
     }
 
 
@@ -165,32 +182,36 @@ public class Actions {
      * @throws IOException
      */
     public void editFile() throws ServletException, IOException {
-        if(!FileUtils.isEditable(path)){
-            response.sendRedirect("/commander?path="+rootDir);
+        String filePath = request.getParameter("path");
+
+        if(!FileUtils.isFileEditable(filePath)){
+            response.sendRedirect("/commander?path=" + Utils.encodeURL(rootDir));
+            return;
         }
-        switch (FileUtils.getFileExtension(path)){
+
+        switch (FileUtils.getFileExtension(filePath)){
             case "txt":
                 String text = request.getParameter("text");
 
                 if(text != null){
-                    PrintWriter writer = new PrintWriter(path, "UTF-8");
+                    PrintWriter writer = new PrintWriter(filePath, "UTF-8");
 
                     writer.print(text);
                     writer.close();
-                    response.sendRedirect("/commander?path=" + path + "&action=open");
+                    response.sendRedirect("/commander?path=" + Utils.decodeURL(filePath) + "&action=open");
                 } else {
-                    out.print(Utils.makeMessage(path) +
+                    out.print(Utils.makeMessage(URLDecoder.decode(path)) +
                             "<form  method=\"POST\" action=\"/commander\">" +
-                                "<input hidden name=\"action\" value=\"edit\">" +
-                                "<input hidden name=\"path\" value=\""+path+"\">" +
-                                "<textarea name=\"text\" rows=\"25\" cols=\"120\">" + FileUtils.readTXT(path, "\n") + "</textarea> <br>" +
-                                "<input type=\"submit\" value=\"Save\">" +
+                            "<input hidden name=\"action\" value=\"edit\">" +
+                            "<input hidden name=\"path\" value=\"" + filePath + "\">" +
+                            "<textarea name=\"text\" rows=\"25\" cols=\"120\">" + FileUtils.readTXT(filePath, "\n") + "</textarea> <br>" +
+                            "<input type=\"submit\" value=\"Save\">" +
                             "</form>"
                     );
                 }
                 break;
             default:
-                response.sendRedirect("/commander?path=/");
+                response.sendRedirect("/commander?path=" + Utils.encodeURL(rootDir));
         }
     }
 
@@ -202,39 +223,41 @@ public class Actions {
      * @throws IOException
      */
     private void delete() throws ServletException, IOException {
-        String path = request.getParameter("path");
-        File file = new File(path);
+        String filePath = request.getParameter("path");
+        File file = new File(filePath);
+        String folderToRedirect = rootDir;
         int endIndex;
 
         if(file.exists()){
-            FileUtils.deleteFolderOrFile(file);
+            FileUtils.deleteFolderOrFile(filePath);
 
-            if((endIndex = path.lastIndexOf("/")) == -1) {
-                endIndex = path.lastIndexOf("\\");
+            if((endIndex = filePath.lastIndexOf("/")) == -1) {
+                endIndex = filePath.lastIndexOf("\\");
             }
 
-            response.sendRedirect("/commander?path=" + path.substring(0, endIndex+1));//to previous folder
-        } else {
-            response.sendRedirect("/commander?path=" + rootDir);
+            folderToRedirect = filePath.substring(0, endIndex+1);
         }
+
+        response.sendRedirect("/commander?path=" + Utils.encodeURL(folderToRedirect));
     }
 
 
     private void printFileCreationForm() throws IOException {
         out.print("<form  method=\"GET\" action=\"/commander\">" +
-                    "<input hidden name=\"action\" value=\"createFile\">" +
-                    "<input hidden name=\"path\" value=\""+path+"\">" +
-                    "<input name=\"newFileName\">" +
-                    "<input type=\"submit\" value=\"Create File\">" +
+                "<input hidden name=\"action\" value=\"createFile\">" +
+                "<input hidden name=\"path\" value=\""+path+"\">" +
+                "<input name=\"newFileName\">" +
+                "<input type=\"submit\" value=\"Create File\">" +
                 "</form>"
         );
     }
+
 
     private void printDirCreationForm() throws IOException {
         out.print("<form  method=\"GET\" action=\"/commander\">" +
                 "<input hidden name=\"action\" value=\"createDir\">" +
                 "<input hidden name=\"path\" value=\""+path+"\">" +
-                "<input name=\"newFileName\">" +
+                "<input name=\"newDirName\">" +
                 "<input type=\"submit\" value=\"Create Dir\">" +
                 "</form>"
         );
@@ -244,17 +267,23 @@ public class Actions {
     private void printLinkToParentDirectory() throws IOException {
         File folder = new File(path);
 
-        if(folder.getParent() != null && !(folder.getAbsolutePath()+"\\").equals(rootDir)){
-            out.print("<br><a href=\"?path=" + folder.getParent() + "\"> ...GO BACK... </a><br><br>");
+        if(isOnlyServerFolder){
+            if(folder.getParent() != null && !rootDir.equals(folder.getAbsolutePath()+"\\")){
+                out.print("<br><a href=\"?path=" + Utils.encodeURL(folder.getParent()) + "\"> ...GO BACK... </a><br><br>");
+            }
+        } else {
+            if(folder.getParent() != null){
+                out.print("<br><a href=\"?path=" + Utils.encodeURL(folder.getParent()) + "\"> ...GO BACK... </a><br><br>");
+            }
         }
     }
 
 
-    private void printLinksToAllDrives() {
+    private void printLinksToAllDrives() throws IOException {
         File[] drives = File.listRoots();
 
         for(File drive : drives){
-            out.print("<a href=\"?path=" + drive.getPath() + "\"> <font size=\"5\" color=\"#48A5D8\" face=\"Arial\">" + drive + "</font></a>     ");
+            out.print("<a href=\"?path=" + Utils.encodeURL(drive.getPath()) + "\"> <font size=\"5\" color=\"#48A5D8\" face=\"Arial\">" + drive + "</font></a>     ");
         }
     }
 }

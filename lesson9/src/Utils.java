@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 /**
@@ -10,21 +11,16 @@ import java.net.URLEncoder;
 
 public abstract class Utils {
 
-    /**
-     * Encodes text to put it as URL parameter
-     *
-     * @param url adress
-     * @return encoded text
-     */
-    public static String encodeText(String url) throws IOException {
+    public static String encodeURL(String url) throws IOException {
         return URLEncoder.encode(url, "UTF-8").replace("+", "%20");
     }
 
 
-    /**
-     * @param messageText
-     * @return message with HTML tags
-     */
+    public static String decodeURL(String url) throws IOException {
+        return URLDecoder.decode(url, "UTF-8");
+    }
+
+
     public static String makeMessage(String messageText){
         return "<h3><center>" + messageText + "</center></h3>";
     }

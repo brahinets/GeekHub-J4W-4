@@ -27,18 +27,21 @@ public class FileUtils {
      * @throws IOException
      */
     public static String readFileAndAddHTMLtags(String path) throws IOException {
-        if(!new File(path).exists()){
+        File file = new File(path);
+
+        if(!file.exists() || !file.isFile()){
             return Utils.makeMessage("File not found");
         }
 
         String name = Utils.makeMessage(path);
+        String sizeType = "KB";
 
         switch (getFileExtension(path)){
             case "txt": return name + readTXT(path, "<br>");
             default   : return "<h5> " + path + "  :  " +
-                    getFileSize(new File(path), "KB") +"    KB   :  "+
-                    new Date(new File(path).lastModified()) +
-                    "</h5>";
+                            getFileSize(path, sizeType) +"    " + sizeType + "   :  "+
+                            new Date(file.lastModified()) +
+                            "</h5>";
         }
     }
 
@@ -68,21 +71,13 @@ public class FileUtils {
     }
 
 
-    public static void createFile(String pathToCurrentDir, String fileName) throws ServletException, IOException {
-        File file = new File(pathToCurrentDir + "\\" + fileName);
-
-        if(!file.exists()){
-            file.createNewFile();
-        }
+    public static boolean createFile(String pathToCurrentDir, String fileName) throws ServletException, IOException {
+        return new File(pathToCurrentDir + "\\" + fileName).createNewFile();
     }
 
 
-    public static void createDir(String pathToCurrentDir, String dirName) throws ServletException, IOException {
-        File file = new File(pathToCurrentDir + "\\" + dirName);
-
-        if(!file.exists()){
-            file.mkdirs();
-        }
+    public static boolean createDir(String pathToCurrentDir, String dirName) throws ServletException, IOException {
+        return new File(pathToCurrentDir + "\\" + dirName).mkdirs();
     }
 
 
@@ -95,46 +90,50 @@ public class FileUtils {
     }
 
 
-    public static long getFileSize(File file, String size){
-        if(file == null && !file.exists()){
-            return -1;
-        }
-
+    public static long getFileSize(String filePath, String sizeType){
         long divisor;
 
-        switch(size) {
+        switch(sizeType) {
             case "KB" : divisor = 1024; break;
             case "MB" : divisor = 1024*1024; break;
             case "GB" : divisor = 1024*1024*1024; break;
             default   : divisor = 1; break;
         }
 
-        return file.length()/divisor;
+        return new File(filePath).length()/divisor;
     }
 
 
-    public static boolean isEditable(String filePath){
-        return editableTypes.contains(getFileExtension(filePath));
+    public static boolean isFileEditable(String filePath){
+        return editableTypes.contains(getFileExtension(filePath))
+                && filePath != null
+                && new File(filePath).exists();
     }
 
 
-    /**
-     * recursive deleting of Folder or File
-     *
-     * @param folder
-     */
-    public static void deleteFolderOrFile(File folder) {
-        File[] filesList = folder.listFiles();
+    public static void deleteFolderOrFile(String path) {
+        File folderOrFile = new File(path);
+        File[] filesList = folderOrFile.listFiles();
 
-        if(filesList!=null) { //some JVMs return null for empty dirs
-            for(File file: filesList) {
-                if(file.isDirectory()) {
-                    deleteFolderOrFile(file);
+        if(filesList != null) { //some JVMs return null for empty dirs
+            for(File subFolder: filesList) {
+                if(subFolder.isDirectory()) {
+                    deleteFolderOrFile(subFolder.getAbsolutePath());
                 } else {
-                    file.delete();
+                    subFolder.delete();
                 }
             }
         }
-        folder.delete();
+
+        folderOrFile.delete();
+    }
+
+
+    public static boolean isFolderEmpty(File folder){
+        if(folder.listFiles() != null && folder.listFiles().length != 0) {
+            return true;
+        }
+
+        return false;
     }
 }
