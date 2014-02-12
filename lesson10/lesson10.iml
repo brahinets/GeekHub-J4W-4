@@ -21,6 +21,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jsp-api (3)" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="jstl-1.2 (3)" level="project" />
+    <orderEntry type="library" name="servlet-api (3)" level="project" />
   </component>
 </module>
 
