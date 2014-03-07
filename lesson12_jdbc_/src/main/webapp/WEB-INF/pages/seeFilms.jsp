@@ -37,7 +37,7 @@
                 ${film.year}
             </td>
             <td>
-                ${fn:length(film.actors)}
+                ${film.actorsCount}
             </td>
             <td>
                 <a href="film/edit/${film.id}"><img src="img/edit.png" width="20px" height="20px"/></a>

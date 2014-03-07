@@ -97,4 +97,15 @@ public class FilmDAOimpl implements FilmDAO{
         }
     }
 
+
+    public Integer getActorsCount(Film film) throws Exception {
+        String sql = "SELECT COUNT(*) AS count FROM ACTOR_FILM WHERE filmId = " + film.getId();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        rs.next();
+        Integer count = rs.getInt("count");
+        rs.close();
+
+        return  count;
+    }
 }

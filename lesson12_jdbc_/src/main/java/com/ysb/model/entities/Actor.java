@@ -16,6 +16,8 @@ import java.util.Set;
 
 public class Actor extends Entity{
 
+    @Ignore
+    private Integer filmsCount;
     private String firstName;
     private String secondName;
     private Date birthDate;
@@ -79,4 +81,13 @@ public class Actor extends Entity{
     public void setSecondName(String secondName) {
         this.secondName = secondName;
     }
+
+    public Integer getFilmsCount() {
+        return filmsCount;
+    }
+
+    public void setFilmsCount(Integer filmsCount) {
+        this.filmsCount = filmsCount;
+    }
+
 }

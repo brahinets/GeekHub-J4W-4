@@ -2,6 +2,7 @@ package com.ysb.model.service;
 
 import com.ysb.model.dao.FilmDAOimpl;
 import com.ysb.model.entities.Film;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class FilmService {
             List<Film> films = filmDAOimpl.getAll();
 
             for(Film film : films){
-                film.setActors(filmDAOimpl.getActorsToFilm(film.getId()));
+                film.setActorsCount(filmDAOimpl.getActorsCount(film));
             }
 
             return films;
@@ -92,5 +93,12 @@ public class FilmService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    /* return count of actors who played in film */
+    public static Integer getActorsCount(Film film) throws Exception {
+        FilmDAOimpl filmDAOimpl = new FilmDAOimpl();
+        return filmDAOimpl.getActorsCount(film);
     }
 }

@@ -101,8 +101,8 @@ public class ActorDAOimpl implements ActorDAO{
         }
 
         try (Statement statement = connection.createStatement()){
-            sql1 = new StringBuilder("DELETE FROM ACTOR_FILM WHERE actorId = " + entity.getId());
-            statement.execute(sql1.toString());
+            sql1 = new StringBuilder("DELETE FROM ACTOR_FILM WHERE actorId = ?");
+            statement.execute(sql1.toString(), entity.getId());
 
             for(Film film : ((Actor) entity).getFilms()){
                 sql1 = new StringBuilder("INSERT INTO ACTOR_FILM ( actorId, filmId) VALUES ('" + entity.getId() + "', '" + film.getId() + "')");
@@ -112,4 +112,14 @@ public class ActorDAOimpl implements ActorDAO{
     }
 
 
+    public Integer getFilmsCount(Actor actor) throws Exception {
+        String sql = "SELECT COUNT(*) AS count FROM ACTOR_FILM WHERE actorId = " + actor.getId();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        rs.next();
+        Integer count = rs.getInt("count");
+        rs.close();
+
+        return count;
+    }
 }

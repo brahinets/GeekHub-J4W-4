@@ -45,7 +45,7 @@
                 <fmt:formatDate type="date" value="${actor.birthDate}" pattern="dd/MM/yyyy" />
             </td>
             <td>
-                ${fn:length(actor.films)}
+                ${actor.filmsCount}
             </td>
             <td>
                 <a href="actor/edit/${actor.id}"><img src="img/edit.png" width="20px" height="20px"/></a>

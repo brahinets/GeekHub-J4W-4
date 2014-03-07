@@ -39,8 +39,9 @@ public class ActorService {
         try {
             ActorDAOimpl actorDAOimpl = new ActorDAOimpl();
             List<Actor> actors = actorDAOimpl.getAll();
+
             for(Actor actor : actors){
-                actor.setFilms(actorDAOimpl.getFilmsOfActor(actor.getId()));
+                actor.setFilmsCount(actorDAOimpl.getFilmsCount(actor));
             }
 
             return actors;
@@ -101,5 +102,12 @@ public class ActorService {
             actorDAOimpl.delete(actor);
         } catch (Exception ignored) {
         }
+    }
+
+    /* return count of films in which actor played */
+    public static Integer getFilmsCount(Actor actor) throws Exception {
+        ActorDAOimpl actorDAOimpl = new ActorDAOimpl();
+
+        return actorDAOimpl.getFilmsCount(actor);
     }
 }

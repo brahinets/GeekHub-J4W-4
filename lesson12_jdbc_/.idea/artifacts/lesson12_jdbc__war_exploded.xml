@@ -2,10 +2,10 @@
   <artifact type="exploded-war" build-on-make="true" name="lesson12_jdbc_:war exploded">
     <output-path>$PROJECT_DIR$/target/lesson12_jdbc_</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="lesson12_jdbc/web/Web" />
+      <element id="javaee-facet-resources" facet="lesson12_jdbc_/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="lesson12_jdbc" />
+          <element id="module-output" name="lesson12_jdbc_" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-core:3.2.0.RELEASE" />

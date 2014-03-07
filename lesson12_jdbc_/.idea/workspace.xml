@@ -63,7 +63,17 @@
     <favorites_list name="lesson12_jdbc_" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="seeActors.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/seeActors.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="48" column="16" selection-start="1191" selection-end="1191" vertical-scroll-proportion="0.6405797" vertical-offset="595" max-vertical-offset="1139">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -83,11 +93,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/HelloController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/storage/DatabaseStorage.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/seeFilms.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/service/FilmService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/ActorController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/seeActors.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/addFilm.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/addActor.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/FilmController.java" />
@@ -102,10 +108,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/dao/StorageDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/dao/ActorDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/dao/FilmDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/service/ActorService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/dao/ActorDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/dao/FilmDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/dao/EntityDAOimpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/dao/ActorDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/dao/FilmDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/entities/Film.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/service/FilmService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/seeFilms.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/entities/Actor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/service/ActorService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/dao/FilmDAOimpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/dao/ActorDAOimpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/seeActors.jsp" />
       </list>
     </option>
   </component>
@@ -124,10 +140,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1366" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -142,7 +156,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -193,6 +207,7 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../geekhub" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -509,44 +524,46 @@
       <updated>1393887854581</updated>
       <workItem from="1393887858843" duration="267000" />
       <workItem from="1393888128700" duration="38604000" />
+      <workItem from="1394116554960" duration="755000" />
+      <workItem from="1394197702253" duration="3753000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38871000" />
+    <option name="totallyTimeSpent" value="43379000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="0" y="0" width="1366" height="728" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22583081" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22782874" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33722872" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -571,11 +588,74 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/ActorController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="8" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340">
+        <state line="11" column="13" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="952">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/FilmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/ActorDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="17" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/FilmDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="17" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/FilmDAOimpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="48" selection-start="2899" selection-end="2899" vertical-scroll-proportion="0.0" vertical-offset="1367" max-vertical-offset="1785">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="SELECT actor..ACTOR_FILM..." />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..FILM..." />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..FILM..." />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/ActorDAOimpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="78" selection-start="4050" selection-end="4050" vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2040">
+          <folding>
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="SELECT filmI..ACTOR_FILM..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ACTOR..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ACTOR..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="8" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -587,9 +667,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="4" selection-start="455" selection-end="455" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <folding />
-        </state>
+        <state line="7" column="4" selection-start="455" selection-end="455" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -599,76 +677,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/seeFilms.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="7" selection-start="1225" selection-end="1225" vertical-scroll-proportion="2.3545706" vertical-offset="0" max-vertical-offset="986">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/seeActors.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.6952908" vertical-offset="612" max-vertical-offset="1139">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/addFilm.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="19" selection-start="99" selection-end="99" vertical-scroll-proportion="0.14127424" vertical-offset="0" max-vertical-offset="459">
-          <folding />
-        </state>
+        <state line="3" column="19" selection-start="99" selection-end="99" vertical-scroll-proportion="0.14127424" vertical-offset="0" max-vertical-offset="459" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/addActor.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1910" selection-end="1910" vertical-scroll-proportion="0.90229887" vertical-offset="502" max-vertical-offset="918">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="1" selection-start="392" selection-end="392" vertical-scroll-proportion="0.5710594" vertical-offset="0" max-vertical-offset="387">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/FilmController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1419" selection-end="1419" vertical-scroll-proportion="1.2635659" vertical-offset="208" max-vertical-offset="901">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/ActorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="413" selection-end="413" vertical-scroll-proportion="-1.0454545" vertical-offset="578" max-vertical-offset="952">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="48" column="0" selection-start="1910" selection-end="1910" vertical-scroll-proportion="0.90229887" vertical-offset="502" max-vertical-offset="918" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/entities/Ignore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="24" selection-start="545" selection-end="545" vertical-scroll-proportion="0.5271318" vertical-offset="0" max-vertical-offset="387">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/entities/Actor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="36" selection-start="291" selection-end="291" vertical-scroll-proportion="0.5710594" vertical-offset="0" max-vertical-offset="1224">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#506#512#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="24" column="24" selection-start="545" selection-end="545" vertical-scroll-proportion="0.5271318" vertical-offset="0" max-vertical-offset="387" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/entities/Entity.java">
@@ -680,119 +701,136 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/ConnectionUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="23" selection-start="275" selection-end="275" vertical-scroll-proportion="0.4728682" vertical-offset="4" max-vertical-offset="459">
+        <state line="11" column="23" selection-start="275" selection-end="275" vertical-scroll-proportion="0.4728682" vertical-offset="4" max-vertical-offset="459" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/EntityUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="352" selection-end="352" vertical-scroll-proportion="-0.3871528" vertical-offset="495" max-vertical-offset="1071" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/ActorDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="0" selection-start="1658" selection-end="1840" vertical-scroll-proportion="0.58760107" vertical-offset="700" max-vertical-offset="1139">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/FilmDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="24" selection-start="1679" selection-end="1682" vertical-scroll-proportion="0.76857144" vertical-offset="700" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/service/FilmService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="0" selection-start="1615" selection-end="1615" vertical-scroll-proportion="0.72" vertical-offset="275" max-vertical-offset="1071">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#getFilmByID#0;class#FilmService#0" expanded="false" />
+            <element signature="method#getFilmByIDFull#0;class#FilmService#0" expanded="false" />
+            <element signature="method#getList#0;class#FilmService#0" expanded="false" />
+            <element signature="method#add#0;class#FilmService#0" expanded="false" />
+            <element signature="method#deleteByID#0;class#FilmService#0" expanded="false" />
+            <element signature="method#deleteFilm#0;class#FilmService#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/entities/Film.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="299" selection-end="299" vertical-scroll-proportion="0.3327674" vertical-offset="42" max-vertical-offset="1037">
-          <folding>
-            <element signature="e#441#448#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/ActorDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="31" selection-start="673" selection-end="673" vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="680">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#getFilmsOfActor#0;class#ActorDAO#0" expanded="false" />
-            <element signature="docComment;method#getByID#0;class#ActorDAO#0" expanded="false" />
-            <element signature="docComment;method#getAll#0;class#ActorDAO#0" expanded="false" />
-            <element signature="docComment;method#delete#0;class#ActorDAO#0" expanded="false" />
-            <element signature="docComment;method#save#0;class#ActorDAO#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/FilmDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="4" selection-start="714" selection-end="714" vertical-scroll-proportion="0.39388794" vertical-offset="91" max-vertical-offset="680">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#getActorsToFilm#0;class#FilmDAO#0" expanded="false" />
-            <element signature="docComment;method#getByID#0;class#FilmDAO#0" expanded="false" />
-            <element signature="docComment;method#getAll#0;class#FilmDAO#0" expanded="false" />
-            <element signature="docComment;method#delete#0;class#FilmDAO#0" expanded="false" />
-            <element signature="docComment;method#save#0;class#FilmDAO#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/EntityUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="352" selection-end="352" vertical-scroll-proportion="-0.3871528" vertical-offset="495" max-vertical-offset="1071">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/EntityDAOimpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="52" selection-start="0" selection-end="1730" vertical-scroll-proportion="0.5959253" vertical-offset="108" max-vertical-offset="697">
+        <state line="18" column="4" selection-start="331" selection-end="371" vertical-scroll-proportion="0.41714287" vertical-offset="126" max-vertical-offset="1156">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/FilmDAOimpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/entities/Actor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="19" selection-start="347" selection-end="347" vertical-scroll-proportion="0.34634975" vertical-offset="0" max-vertical-offset="1785">
+        <state line="87" column="0" selection-start="1989" selection-end="1989" vertical-scroll-proportion="0.6142857" vertical-offset="958" max-vertical-offset="1343">
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1393980584576" expanded="true" signature="-1:-1" placeholder="SELECT actor..ACTOR_FILM..." />
+            <element signature="e#550#556#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/ActorDAOimpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/seeFilms.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="27" selection-start="1081" selection-end="1081" vertical-scroll-proportion="-1.65625" vertical-offset="1464" max-vertical-offset="2040">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1393980584587" expanded="true" signature="-1:-1" placeholder="SELECT filmI..ACTOR_FILM..." />
-            <marker date="1393980584587" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ACTOR..." />
-            <marker date="1393980584587" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ACTOR..." />
-            <marker date="1393980584587" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-            <marker date="1393980584587" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-          </folding>
+        <state line="39" column="34" selection-start="870" selection-end="870" vertical-scroll-proportion="0.5217391" vertical-offset="483" max-vertical-offset="986">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/service/ActorService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="32" selection-start="290" selection-end="290" vertical-scroll-proportion="0.22920203" vertical-offset="52" max-vertical-offset="731">
+        <state line="42" column="12" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.7789757" vertical-offset="119" max-vertical-offset="1173">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getActorByID#0;class#ActorService#0" expanded="false" />
             <element signature="method#getActorByIDFull#0;class#ActorService#0" expanded="false" />
-            <element signature="method#getList#0;class#ActorService#0" expanded="false" />
             <element signature="method#add#0;class#ActorService#0" expanded="false" />
             <element signature="method#add#1;class#ActorService#0" expanded="false" />
             <element signature="method#deleteByID#0;class#ActorService#0" expanded="false" />
-            <element signature="method#delete#0;class#ActorService#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/service/FilmService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/FilmController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.39388794" vertical-offset="125" max-vertical-offset="714">
+        <state line="21" column="57" selection-start="794" selection-end="794" vertical-scroll-proportion="0.3018868" vertical-offset="143" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="8" selection-start="443" selection-end="443" vertical-scroll-proportion="0.41239893" vertical-offset="0" max-vertical-offset="371">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/ActorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="58" selection-start="839" selection-end="839" vertical-scroll-proportion="0.37988827" vertical-offset="136" max-vertical-offset="850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/ActorDAOimpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="15" selection-start="4421" selection-end="4421" vertical-scroll-proportion="0.33519554" vertical-offset="1597" max-vertical-offset="1989">
+          <folding>
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="SELECT filmI..ACTOR_FILM..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ACTOR..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ACTOR..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+            <marker date="1394201375880" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/FilmDAOimpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="4" selection-start="3821" selection-end="4201" vertical-scroll-proportion="0.45013478" vertical-offset="1533" max-vertical-offset="1972">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getFilmByID#0;class#FilmService#0" expanded="false" />
-            <element signature="method#getFilmByIDFull#0;class#FilmService#0" expanded="false" />
-            <element signature="method#getList#0;class#FilmService#0" expanded="false" />
-            <element signature="method#getListFull#0;class#FilmService#0" expanded="false" />
-            <element signature="method#add#0;class#FilmService#0" expanded="false" />
-            <element signature="method#deleteByID#0;class#FilmService#0" expanded="false" />
-            <element signature="method#deleteFilm#0;class#FilmService#0" expanded="false" />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="SELECT actor..ACTOR_FILM..." />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..FILM..." />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..FILM..." />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1394201346105" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/seeActors.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="16" selection-start="1191" selection-end="1191" vertical-scroll-proportion="0.6405797" vertical-offset="595" max-vertical-offset="1139">
+          <folding />
         </state>
       </provider>
     </entry>

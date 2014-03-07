@@ -24,10 +24,10 @@ public interface ActorDAO {
 
 
     /**
-     * Retrieves Film from storage by its identifier.
+     * Retrieves Actor from storage by its identifier.
      *
      * @param id identifier of that object.
-     * @return new instance of Film or null if it is not find by id.
+     * @return new instance of Actor or null if it is not find by id.
      * @throws Exception
      */
     public Actor getByID(Integer id) throws Exception;
@@ -35,7 +35,7 @@ public interface ActorDAO {
 
     /**
      * Retrieves all Actors from storage.
-     * @return getAll of objects of Actor or empty getAll if storage does not contains any object.
+     * @return list of bjects of Actor or empty list if storage does not contains any object.
      * @throws Exception
      */
     public List<Actor> getAll() throws Exception;
@@ -56,4 +56,11 @@ public interface ActorDAO {
      */
     public void save(Actor entity) throws Exception;
 
+
+    /**
+     * Get films count in which actor stared
+     * @param entity of Actor.
+     * @throws Exception
+     */
+    public Integer getFilmsCount(Actor entity) throws Exception;
 }

@@ -16,6 +16,8 @@ import java.util.Set;
 
 public class Film extends Entity{
 
+    @Ignore
+    private Integer actorsCount;
     private String name;
     private Integer year;
 
@@ -66,5 +68,14 @@ public class Film extends Entity{
     public void setYear(Integer year) {
         this.year = year;
     }
+
+    public Integer getActorsCount() {
+        return actorsCount;
+    }
+
+    public void setActorsCount(Integer actorsCount) {
+        this.actorsCount = actorsCount;
+    }
+
 
 }

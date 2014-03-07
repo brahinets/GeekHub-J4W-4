@@ -56,4 +56,12 @@ public interface FilmDAO {
      */
     public void save(Film entity) throws Exception;
 
+
+
+    /**
+     * Get actors count who played in film
+     * @param film
+     * @throws Exception
+     */
+    public Integer getActorsCount(Film film) throws Exception;
 }
