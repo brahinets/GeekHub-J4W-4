@@ -1,0 +1,174 @@
+/* @group messageList */
+/*#mailBlock { display: block; width: auto; background-color: #f9f9f9; border: 1px solid #ccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; padding: 12px; }*/
+
+/*#mailBlock .pic { float: left; display: block; margin-right: 10px; }*/
+/*#mailBlock .pic a img { padding: 7px; background: #fff; border: 1px solid #ccc; }*/
+
+/*#mailBlock .data { float: left; display: block; position:  relative; width: 350px; height: 166px; padding: 4px; padding-left: 15px; background: #e6e6e6; overflow:  hidden; box-sizing: border-box; -moz-box-sizing: border-box; }*/
+/*#mailBlock .data h1 { color: #474747; line-height: 1.6em; text-shadow: 0px 1px 1px #fff; }*/
+/*#mailBlock .data h3 { color: #666; line-height: 0.9em; margin-bottom: 5px; }*/
+/*#mailBlock .data h4 { font-size: 1.2em; line-height: 1.3em; }*/
+
+/*#mailBlock .data .socialMediaLinks { position: absolute; right: 6px; top: 8px; }*/
+/*#mailBlock .data .socialMediaLinks a img { margin-right: 5px; }*/
+
+/*#mailBlock .data .sep { clear: both; margin-top: 40px; width: 320px; height: 1px; border-bottom: 1px solid #ccc; margin-bottom: 0; }*/
+/*#mailBlock .data ul.numbers { list-style: none; width: 320px; padding-top: 7px; margin-top: 0; border-top: 1px solid #fff; color: #676767; }*/
+/*#mailBlock .data ul.numbers li { width: 95px; float: left; display: block; padding-left: 8px; height: 50px; border-right: 1px dotted #bbb; text-transform: uppercase; }*/
+/*#mailBlock .data ul.numbers li strong { color: #434343; display: block; font-size: 3.4em; line-height: 1.1em; font-weight: bold; }*/
+/* @group messageList */
+/*#mailBlock {*/
+    /*display: block;*/
+    /*width: 840px;*/
+
+    /*background-color: #f9f9f9;*/
+    /*border: 1px solid #ccc;*/
+    /*-moz-border-radius: 5px;*/
+    /*-webkit-border-radius: 5px;*/
+    /*border-radius: 5px;*/
+    /*padding: 12px;*/
+    /*padding: 12px;*/
+/*}*/
+
+
+
+/*#mailNavi {display: table; }*/
+/*#mailNavi { }*/
+/*#mailNavi { float: left; display: inline-block;}*/
+/*#mailNavi { float: right; display: block;}*/
+
+
+/*#mailBlock .pic { float: left; display: block; margin-right: 10px; }*/
+/*#mailBlock .pic a img { padding: 7px; background: #fff; border: 1px solid #ccc; }*/
+
+
+
+/*#oneMessage {*/
+    /*background-color: #999919;*/
+    /*border: 1px solid #ccc;*/
+    /*-moz-border-radius: 5px;*/
+    /*-webkit-border-radius: 5px;*/
+    /*border-radius: 5px;*/
+    /*padding: 12px;*/
+    /*margin-top: 5px;*/
+/*}*/
+
+/*#mailBlock {*/
+    /*display: block;*/
+    /*width: 800px;*/
+    /*float: left;*/
+    /*overflow: hidden;*/
+    /*margin-right: 20px;*/
+/*}*/
+
+/*#mailPart {*/
+    /*width: 700px;*/
+    /*background: #ffeca8;*/
+    /*float: left;*/
+    /*margin-left: 20px;*/
+/*}*/
+
+/*#mailBar{*/
+    /*background: indianred;*/
+/*}*/
+
+/*#mailList{*/
+    /*background: rgb(255, 0, 4);*/
+/*}*/
+
+
+/*#mailList #messageInList{*/
+    /*background: #00d6ff;*/
+/*}*/
+
+/*#mailList #messageInList #mailPhoto{*/
+    /*width: 100px;*/
+    /*background: #00d6ff;*/
+    /*float:left;*/
+/*}*/
+
+/*#mailList #messageInList #mailContent{*/
+    /*width: 400px;*/
+    /*background: #00ffcf;*/
+    /*float:left;*/
+/*}*/
+
+/*#mailList #messageInList #mailFrom{*/
+    /*width: 100px;*/
+    /*background: #a1ff17;*/
+    /*float:left;*/
+/*}*/
+
+/*#mailList #messageInList #mailActions{*/
+    /*width: 100px;*/
+    /*background: #ffde00;*/
+    /*float:left;*/
+/*}*/
+
+
+
+
+/* message read */
+/*#messageWritePart{*/
+    /*background-color: #00d6ff;*/
+    /*width: 600px;*/
+/*}*/
+/*#messageWritePart #messageWritePhoto{*/
+    /*float: left;*/
+    /*background-color: #a1ff17;*/
+    /*width: 100px;*/
+/*}*/
+/*#messageWritePart #messageWriteInfo{*/
+    /*float: left;*/
+    /*background-color: #cccccc;*/
+    /*width: 400px;*/
+/*}*/
+/*#messageWritePart #messageWriteInfo #messageWriteTheme{*/
+    /*background-color: #e80815;*/
+/*}*/
+/*#messageWritePart #messageWriteInfo #messageWriteTo{*/
+    /*background-color: #6ec2e8;*/
+/*}*/
+/*#messageWritePart #messageWriteInfo #messageWriteTheme{*/
+    /*background-color: #e80815;*/
+/*}*/
+/*#messageWritePart #messageWriteContent{*/
+    /*background-color: #ffde00;*/
+/*}*/
+
+/* @group messageList */
+#mailBlock {
+    display: block;
+    width: 840px;
+
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+
+
+/*#mailNavi {display: table; }*/
+/*#mailNavi { }*/
+/*#mailNavi { float: left; display: inline-block;}*/
+/*#mailNavi { float: right; display: block;}*/
+
+
+/*#mailBlock .pic { float: left; display: block; margin-right: 10px; }*/
+/*#mailBlock .pic a img { padding: 7px; background: #fff; border: 1px solid #ccc; }*/
+
+
+
+#oneMessage {
+    background-color: #999919;
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 12px;
+    margin-top: 5px;
+}
+
