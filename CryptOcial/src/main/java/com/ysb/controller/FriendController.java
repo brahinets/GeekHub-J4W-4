@@ -1,7 +1,7 @@
 package com.ysb.controller;
 
-import com.ysb.model.service.AuthService;
 import com.ysb.model.service.UserService;
+import com.ysb.model.utils.AuthUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +18,11 @@ public class FriendController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    AuthService authService;
 
     @RequestMapping(value = "/friends")
     public ModelAndView seeFriends(HttpServletRequest request) throws Exception {
         ModelAndView mav = new ModelAndView("users");
-        mav.addObject("usersList", userService.getFriends(authService.getLogedUserID(request)));
+        mav.addObject("usersList", userService.getFriends(AuthUtils.getLogedUserID(request)));
 
         return mav;
     }
@@ -33,7 +31,7 @@ public class FriendController {
     @RequestMapping(value = "/subscribed")
     public ModelAndView seeSubscribed(HttpServletRequest request) throws Exception {
         ModelAndView mav = new ModelAndView("users");
-        mav.addObject("usersList", userService.getOnWhoUserSubscribed(authService.getLogedUserID(request)));
+        mav.addObject("usersList", userService.getOnWhoUserSubscribed(AuthUtils.getLogedUserID(request)));
 
         return mav;
     }
@@ -42,7 +40,7 @@ public class FriendController {
     @RequestMapping(value = "/subscribers")
     public ModelAndView seeSubscribers(HttpServletRequest request) throws Exception {
         ModelAndView mav = new ModelAndView("users");
-        mav.addObject("usersList", userService.getWhoSubscribedOnMe(authService.getLogedUserID(request)));
+        mav.addObject("usersList", userService.getWhoSubscribedOnMe(AuthUtils.getLogedUserID(request)));
 
         return mav;
     }
@@ -51,7 +49,7 @@ public class FriendController {
     @RequestMapping(value = "/people")
     public ModelAndView seeAllPeople(HttpServletRequest request) throws Exception {
         ModelAndView mav = new ModelAndView("users");
-        mav.addObject("usersList", userService.getPeople(authService.getLogedUserID(request)));
+        mav.addObject("usersList", userService.getPeople(AuthUtils.getLogedUserID(request)));
 
         return mav;
     }
@@ -59,28 +57,28 @@ public class FriendController {
 
     @RequestMapping(value = "/friend/add/{userID}")
     public String addFriend(HttpServletRequest request, @PathVariable Integer userID) throws SQLException {
-        userService.addSubscribersByIDs(authService.getLogedUserID(request), userID);
+        userService.addSubscribersByIDs(AuthUtils.getLogedUserID(request), userID);
         return "redirect:/";
     }
 
 
     @RequestMapping(value = "/friend/delete/{userID}")
     public String deleteFriend(HttpServletRequest request, @PathVariable Integer userID) throws SQLException {
-        userService.deleteFriendsByIDs(authService.getLogedUserID(request), userID);
+        userService.deleteFriendsByIDs(AuthUtils.getLogedUserID(request), userID);
         return "redirect:/";
     }
 
 
     @RequestMapping(value = "/friend/submit/{userID}")
     public String submitFriend(HttpServletRequest request, @PathVariable Integer userID) throws SQLException {
-        userService.submitFriendsByIDs(authService.getLogedUserID(request), userID);
+        userService.submitFriendsByIDs(AuthUtils.getLogedUserID(request), userID);
         return "redirect:/";
     }
 
 
     @RequestMapping(value = "/subscriber/delete/{userID}")
     public String deleteSubscribers(HttpServletRequest request, @PathVariable Integer userID) throws SQLException {
-        userService.deleteSubscribersByIDs(authService.getLogedUserID(request), userID);
+        userService.deleteSubscribersByIDs(AuthUtils.getLogedUserID(request), userID);
         return "redirect:/";
     }
 }

@@ -1,8 +1,8 @@
 package com.ysb.controller;
 
 import com.ysb.model.entity.User;
-import com.ysb.model.service.AuthService;
 import com.ysb.model.service.UserService;
+import com.ysb.model.utils.AuthUtils;
 import com.ysb.model.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -18,16 +17,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    AuthService authService;
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView userPage(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        Integer myID = (Integer) session.getAttribute("myID");
-        ModelAndView mav;
-        mav = new ModelAndView("redirect:/user/" + myID);
-        return mav;
+    public String userPage(HttpServletRequest request) {
+        return "redirect:/user/" + AuthUtils.getLogedUserID(request);
     }
 
 
@@ -36,11 +28,11 @@ public class UserController {
         ModelAndView mav = new ModelAndView();
 
         try {
-            User user = userService.getOtherUser(Integer.parseInt(ID), authService.getLogedUserID(request));
+            User user = userService.getOtherUser(Integer.parseInt(ID), AuthUtils.getLogedUserID(request));
 
             if (user != null) {
-                mav.setViewName("userPage");
                 mav.addObject("user", user);
+                mav.setViewName("userPage");
             } else {
                 mav.setViewName("redirect:/home");
             }
@@ -53,41 +45,31 @@ public class UserController {
 
 
     @RequestMapping(value = "/user/delete/{ID}", method = RequestMethod.GET)
-    public ModelAndView unregister(HttpServletRequest request, @PathVariable Integer ID) throws Exception {
-        ModelAndView mav = new ModelAndView();
-
-        if(authService.getLogedUserID(request).equals(ID)){
-            authService.logout(request);
+    public String unregister(HttpServletRequest request, @PathVariable Integer ID) throws Exception {
+        if (AuthUtils.getLogedUserID(request).equals(ID)) {
             userService.unregister(ID);
-            mav.setViewName("redirect:/login");
+            return "redirect:/logout";
         } else {
-            mav.setViewName("redirect:/home");
+            return "redirect:/home";
         }
-
-        return mav;
     }
 
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String goHome(HttpServletRequest request) throws Exception {
-        if(authService.getLogedUserID(request) != null){
-            return "redirect:/user/" + authService.getLogedUserID(request);
-        } else {
-            return "redirect:/login";
-        }
+        return "redirect:/user/" + AuthUtils.getLogedUserID(request);
     }
 
 
     @RequestMapping(value = "/settings", method = RequestMethod.GET)
     public ModelAndView settings(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("/settings");
-        mav.addObject("user", userService.getUser(authService.getLogedUserID(request)));
+        mav.addObject("user", userService.getUser(AuthUtils.getLogedUserID(request)));
 
         return mav;
     }
 
 /*
-
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(HttpServletRequest request,
                            String name,
@@ -113,7 +95,7 @@ public class UserController {
                                String avatar) throws Exception {
 
         User user = new User();
-        user.setId(authService.getLogedUserID(request));
+        user.setId(AuthUtils.getLogedUserID(request));
         user.setName(name);
         user.setSurname(surname);
         user.setEmail(email);
@@ -136,10 +118,9 @@ public class UserController {
 
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public ModelAndView search(HttpServletRequest request, String nameOrSurname ) throws Exception {
-        ModelAndView mav = new ModelAndView ("users");
-
-        mav.addObject("usersList", userService.searchSimple(authService.getLogedUserID(request), nameOrSurname));
+    public ModelAndView search(HttpServletRequest request, String nameOrSurname) throws Exception {
+        ModelAndView mav = new ModelAndView("users");
+        mav.addObject("usersList", userService.searchSimple(AuthUtils.getLogedUserID(request), nameOrSurname));
 
         return mav;
     }

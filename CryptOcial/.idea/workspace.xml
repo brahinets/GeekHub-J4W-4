@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="97127125-7591-46d5-95b4-97c90adfd521" name="Default" comment="" />
+    <list default="true" id="97127125-7591-46d5-95b4-97c90adfd521" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ysb/model/utils/AuthUtils.java" />
+      <change type="DELETED" beforePath="C:\GEKK\CryptOtial_30_03\src\main\java\com\ysb\model\service\AuthService.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ysb/controller/AuthController.java" afterPath="$PROJECT_DIR$/src/main/java/com/ysb/controller/AuthController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ysb/controller/BlacklistController.java" afterPath="$PROJECT_DIR$/src/main/java/com/ysb/controller/BlacklistController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ysb/controller/FriendController.java" afterPath="$PROJECT_DIR$/src/main/java/com/ysb/controller/FriendController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ysb/model/utils/GatewayFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/ysb/model/utils/GatewayFilter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ysb/controller/MailController.java" afterPath="$PROJECT_DIR$/src/main/java/com/ysb/controller/MailController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ysb/controller/PostController.java" afterPath="$PROJECT_DIR$/src/main/java/com/ysb/controller/PostController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ysb/model/service/PostService.java" afterPath="$PROJECT_DIR$/src/main/java/com/ysb/model/service/PostService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ysb/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/ysb/controller/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ysb/model/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/ysb/model/service/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/res/js/actions.js" afterPath="$PROJECT_DIR$/src/main/webapp/res/js/actions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/res/js/like.js" afterPath="$PROJECT_DIR$/src/main/webapp/res/js/like.js" />
+    </list>
     <ignored path="CryptOtial.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,116 +78,7 @@
     <favorites_list name="CryptOtial" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="AuthService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/service/AuthService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="0" selection-start="1527" selection-end="1527" vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="1105">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="actions.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/res/js/actions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="41" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="867">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/AuthController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1666">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="userPage.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userPage.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="344" column="50" selection-start="17450" selection-end="17454" vertical-scroll-proportion="0.0" vertical-offset="5848" max-vertical-offset="6732">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MailController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/MailController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2244">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="message.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/message.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="126" selection-start="6962" selection-end="6962" vertical-scroll-proportion="0.0" vertical-offset="2285" max-vertical-offset="2958">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserService.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/service/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="226" column="33" selection-start="6535" selection-end="6535" vertical-scroll-proportion="0.5109983" vertical-offset="3421" max-vertical-offset="4012">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GatewayFilter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/GatewayFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="799">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="global.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/res/css/global.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="170" column="17" selection-start="2433" selection-end="2433" vertical-scroll-proportion="0.0" vertical-offset="2890" max-vertical-offset="8619">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mail.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/res/js/mail.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="1823" selection-end="1823" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="680">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/entity/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="0" selection-start="2287" selection-end="2287" vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="4267">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="960" selection-end="960" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="2567">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -220,28 +125,28 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/dao/MailDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/service/MailService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/dao/PostDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/mail.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/res/js/actions.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/FriendController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/BlacklistController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/dao/UserDAOimpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/service/PostService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/utils/AuthUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/service/AuthService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/PostController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/res/js/like.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/service/GatewayFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/AuthController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/MailController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/utils/GatewayFilter.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/res/js/mail.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/entity/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userPage.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/res/css/global.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/message.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/service/AuthService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/utils/GatewayFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/BlacklistController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/utils/AuthUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/res/js/like.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/MailController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/FriendController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/AuthController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/service/PostService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/model/dao/PostDAOimpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ysb/controller/PostController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/res/js/actions.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userPage.jsp" />
       </list>
     </option>
   </component>
@@ -262,8 +167,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1176" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -372,206 +277,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="webapp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="webapp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="WEB-INF">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="webapp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="WEB-INF">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="pages">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="java">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="com/ysb">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="model">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="java">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="com/ysb">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="model">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="service">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="java">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="com/ysb">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="controller">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -843,40 +548,6 @@
               <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CryptOtial_30_03" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CryptOtial_30_03" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ysb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -906,6 +577,206 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="webapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="webapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WEB-INF">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="webapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WEB-INF">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pages">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/ysb">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="model">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/ysb">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="model">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="service">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="CryptOtial_30_03">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/ysb">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="controller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1393,6 +1264,8 @@
       <workItem from="1398122663248" duration="27000" />
       <workItem from="1398172645710" duration="2222000" />
       <workItem from="1398175406130" duration="197000" />
+      <workItem from="1398177802455" duration="5895000" />
+      <workItem from="1398183928857" duration="3134000" />
     </task>
     <task id="LOCAL-00001" summary="Test Commit">
       <created>1395164304777</created>
@@ -1410,11 +1283,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="484466000" />
+    <option name="totallyTimeSpent" value="493495000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1438,7 +1311,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285578" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16178624" sideWeight="0.49886104" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16145833" sideWeight="0.49886104" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24392523" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1480,7 +1353,7 @@
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
+    <option name="RECENTLY_FILTERED_USERS">
       <collection />
     </option>
   </component>
@@ -1504,17 +1377,12 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="0" selection-start="2427" selection-end="2427" vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="4386">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="0" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="2533">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1543,15 +1411,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="783" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/ConnectionUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="4" selection-start="905" selection-end="905" vertical-scroll-proportion="0.71647507" vertical-offset="0" max-vertical-offset="833">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/users.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="0" selection-start="184" selection-end="184" vertical-scroll-proportion="0.100196466" vertical-offset="0" max-vertical-offset="3060" />
@@ -1570,15 +1429,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/UserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="270" column="10" selection-start="7758" selection-end="7758" vertical-scroll-proportion="0.70689654" vertical-offset="3852" max-vertical-offset="4896" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/EntityUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="7" selection-start="2482" selection-end="2482" vertical-scroll-proportion="0.8697318" vertical-offset="282" max-vertical-offset="1326">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/res/css/user.css">
@@ -1615,44 +1465,14 @@
         <state line="5" column="21" selection-start="223" selection-end="223" vertical-scroll-proportion="0.10855683" vertical-offset="0" max-vertical-offset="783" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="5" selection-start="766" selection-end="766" vertical-scroll-proportion="0.5862069" vertical-offset="0" max-vertical-offset="783">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/resources/html5-schema/common.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state line="132" column="23" selection-start="3392" selection-end="3392" vertical-scroll-proportion="0.33333334" vertical-offset="1983" max-vertical-offset="8228" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/FriendController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="21" selection-start="563" selection-end="563" vertical-scroll-proportion="0.29310346" vertical-offset="0" max-vertical-offset="1564">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/BlacklistController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="492" selection-end="492" vertical-scroll-proportion="0.2768199" vertical-offset="0" max-vertical-offset="1044">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/UserDAOimpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="328" column="26" selection-start="12210" selection-end="12210" vertical-scroll-proportion="-0.79118776" vertical-offset="1897" max-vertical-offset="2941" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/EntityDAOimpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="542" selection-end="542" vertical-scroll-proportion="0.29789272" vertical-offset="12" max-vertical-offset="1224" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/MailDAOimpl.java">
@@ -1685,33 +1505,9 @@
         <state line="14" column="21" selection-start="318" selection-end="318" vertical-scroll-proportion="0.22796935" vertical-offset="0" max-vertical-offset="1044" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/service/MailService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1156" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/PostDAOimpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="1656" selection-end="1656" vertical-scroll-proportion="0.3716475" vertical-offset="253" max-vertical-offset="1037" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/service/PostService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="215" selection-end="215" vertical-scroll-proportion="0.15197957" vertical-offset="0" max-vertical-offset="1105" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/mail.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="28" selection-start="2225" selection-end="2225" vertical-scroll-proportion="0.51473475" vertical-offset="564" max-vertical-offset="1768">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/PostController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="17" selection-start="908" selection-end="908" vertical-scroll-proportion="0.0" vertical-offset="339" max-vertical-offset="1122">
-          <folding />
-        </state>
+        <state line="64" column="28" selection-start="2225" selection-end="2225" vertical-scroll-proportion="0.51473475" vertical-offset="564" max-vertical-offset="1768" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/res/img/noAvatar.png">
@@ -1719,77 +1515,14 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/res/js/like.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="48" selection-start="404" selection-end="404" vertical-scroll-proportion="0.30395913" vertical-offset="0" max-vertical-offset="783">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/res/img/load.gif">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/res/js/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="41" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/AuthController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1666">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/MailController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2244">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/GatewayFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/res/js/mail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1823" selection-end="1823" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="680">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="102" column="0" selection-start="2287" selection-end="2287" vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="4267">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="960" selection-end="960" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="2567">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/service/AuthService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="0" selection-start="1527" selection-end="1527" vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="1105">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userPage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="344" column="50" selection-start="17450" selection-end="17454" vertical-scroll-proportion="0.0" vertical-offset="5848" max-vertical-offset="6732">
           <folding />
         </state>
       </provider>
@@ -1803,15 +1536,171 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/message.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="126" selection-start="6962" selection-end="6962" vertical-scroll-proportion="0.0" vertical-offset="2285" max-vertical-offset="2958">
+        <state line="156" column="126" selection-start="6962" selection-end="6962" vertical-scroll-proportion="-17.346153" vertical-offset="2201" max-vertical-offset="2958">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="1" selection-start="4199" selection-end="4199" vertical-scroll-proportion="1.1302682" vertical-offset="1189" max-vertical-offset="2244">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/res/js/like.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="14" selection-start="125" selection-end="125" vertical-scroll-proportion="0.10855683" vertical-offset="0" max-vertical-offset="783">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/MailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="29" selection-start="584" selection-end="584" vertical-scroll-proportion="0.10983397" vertical-offset="203" max-vertical-offset="2142">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/FriendController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="399" selection-end="399" vertical-scroll-proportion="0.1954023" vertical-offset="0" max-vertical-offset="1530">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/BlacklistController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="5" selection-start="790" selection-end="790" vertical-scroll-proportion="0.37037036" vertical-offset="84" max-vertical-offset="867">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/AuthController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="5" selection-start="2800" selection-end="2800" vertical-scroll-proportion="1.8250319" vertical-offset="16" max-vertical-offset="1564">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="226" column="33" selection-start="6535" selection-end="6535" vertical-scroll-proportion="0.5109983" vertical-offset="3421" max-vertical-offset="4012">
+        <state line="237" column="0" selection-start="6799" selection-end="6799" vertical-scroll-proportion="0.84802043" vertical-offset="3263" max-vertical-offset="4046">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/service/MailService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="20" selection-start="476" selection-end="476" vertical-scroll-proportion="-0.1724138" vertical-offset="373" max-vertical-offset="1156" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="5" selection-start="766" selection-end="766" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/GatewayFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="728" selection-end="728" vertical-scroll-proportion="0.43422732" vertical-offset="0" max-vertical-offset="783">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/EntityUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="7" selection-start="2482" selection-end="2482" vertical-scroll-proportion="0.8697318" vertical-offset="339" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/ConnectionUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="4" selection-start="905" selection-end="905" vertical-scroll-proportion="0.651341" vertical-offset="0" max-vertical-offset="783">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/utils/AuthUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="46" selection-start="189" selection-end="189" vertical-scroll-proportion="0.1954023" vertical-offset="0" max-vertical-offset="783">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/res/js/mail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="1823" selection-end="1823" vertical-scroll-proportion="0.6296296" vertical-offset="0" max-vertical-offset="783">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userPage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="304" column="61" selection-start="14917" selection-end="14917" vertical-scroll-proportion="-0.49405548" vertical-offset="5542" max-vertical-offset="6732">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/res/js/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="0" selection-start="1062" selection-end="4525" vertical-scroll-proportion="0.8033206" vertical-offset="204" max-vertical-offset="2669">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/EntityDAOimpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="35" selection-start="629" selection-end="629" vertical-scroll-proportion="0.3256705" vertical-offset="0" max-vertical-offset="1105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/dao/PostDAOimpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="793" selection-end="1641" vertical-scroll-proportion="0.9118774" vertical-offset="0" max-vertical-offset="3621">
+          <folding>
+            <marker date="1398187027924" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..post..." />
+            <marker date="1398187027924" expanded="true" signature="-1:-1" placeholder="UPDATE post ..." />
+            <marker date="1398187027924" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..post..." />
+            <marker date="1398187027924" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..post..." />
+            <marker date="1398187027924" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..LIKE_POST..." />
+            <marker date="1398187027924" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..LIKE_POST..." />
+            <marker date="1398187027924" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1398187027924" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/model/service/PostService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="8" selection-start="253" selection-end="253" vertical-scroll-proportion="0.19157088" vertical-offset="3" max-vertical-offset="1088">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ysb/controller/PostController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="32" selection-start="1891" selection-end="1891" vertical-scroll-proportion="0.6526181" vertical-offset="441" max-vertical-offset="1241">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

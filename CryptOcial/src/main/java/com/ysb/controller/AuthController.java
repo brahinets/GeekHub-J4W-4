@@ -1,8 +1,8 @@
 package com.ysb.controller;
 
 import com.ysb.model.entity.User;
-import com.ysb.model.service.AuthService;
 import com.ysb.model.service.UserService;
+import com.ysb.model.utils.AuthUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,14 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 public class AuthController {
 
     @Autowired
-    AuthService authService;
-
-    @Autowired
     UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginView(HttpServletRequest request) throws Exception {
-        if (authService.isLogged(request)) {
+        if (AuthUtils.isLogged(request)) {
             return "redirect:/";
         } else {
             return "intro";
@@ -44,10 +41,9 @@ public class AuthController {
         if (action.equals("login")) {
             User user = userService.getUser(login, password);
             if (user != null) {
-                authService.login(user.getId(), request);
+                AuthUtils.login(user.getId(), request);
 /*
             boolean rememberMe = request.getParameter("rememberMe").equals("on");
-
             if(rememberMe) {
                 Cookie rememberMeCookie = new Cookie("userID", userID.toString());
                 rememberMeCookie.setHttpOnly(true);
@@ -55,13 +51,12 @@ public class AuthController {
                 response.addCookie(rememberMeCookie);
             }
 */
-
                 return "redirect:/";
             }
         } else {
             if (userService.isMailFree(email)) {
                 userService.saveUser(name, surname, email, password);
-                authService.login(userService.getUser(email, password).getId(), request);
+                AuthUtils.login(userService.getUser(email, password).getId(), request);
             }
         }
 
@@ -83,11 +78,10 @@ public class AuthController {
         }
 */
 
-        if (authService.isLogged(request)) {
-            authService.logout(request);
+        if (AuthUtils.isLogged(request)) {
+            AuthUtils.logout(request);
         }
 
         return "redirect:/login";
     }
-
 }

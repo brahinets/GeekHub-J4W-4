@@ -1,6 +1,5 @@
 package com.ysb.model.service;
 
-import com.ysb.model.dao.MailDAO;
 import com.ysb.model.dao.UserDAOimpl;
 import com.ysb.model.entity.Gender;
 import com.ysb.model.entity.User;
@@ -232,7 +231,9 @@ public class UserService {
         return users;
     }
 
+
     public void unregister(Integer id) {
         userDAOimpl.deleteUser(id);
     }
+
 }

@@ -2,9 +2,9 @@ package com.ysb.controller;
 
 import com.ysb.model.entity.Message;
 import com.ysb.model.entity.User;
-import com.ysb.model.service.AuthService;
 import com.ysb.model.service.MailService;
 import com.ysb.model.service.UserService;
+import com.ysb.model.utils.AuthUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,38 +21,32 @@ public class MailController {
     MailService mailService;
 
     @Autowired
-    AuthService authService;
-
-    @Autowired
     UserService userService;
 
 
     @RequestMapping(value = "/mail", method = RequestMethod.GET)
-    public ModelAndView mail(HttpServletRequest request) throws Exception {
-        ModelAndView mav = new ModelAndView("mail");
-        mav.addObject("mailList", mailService.getInputMessages(authService.getLogedUserID(request)));
-
-        return mav;
+    public String mail(HttpServletRequest request) throws Exception {
+        return "mail";
     }
 
 
     @ResponseBody
     @RequestMapping(value = "/mail/out")
     public Collection<Message> outputMailList(HttpServletRequest request) throws Exception {
-
-        return mailService.getOutputMessages(authService.getLogedUserID(request));
+        return mailService.getOutputMessages(AuthUtils.getLogedUserID(request));
     }
 
 
     @ResponseBody
     @RequestMapping(value = "/mail/in")
     public Collection<Message> inputMailList(HttpServletRequest request) throws Exception {
-        return mailService.getInputMessages(authService.getLogedUserID(request));
+        return mailService.getInputMessages(AuthUtils.getLogedUserID(request));
     }
 
 
     @RequestMapping(value = "/mail/read/{id}")
-    public ModelAndView readMessage(@PathVariable Integer id, HttpServletRequest request) throws Exception {
+    public ModelAndView readMessage(HttpServletRequest request,
+                                    @PathVariable Integer id) throws Exception {
         ModelAndView mav = new ModelAndView();
         Message message = mailService.getMessageByID(id);
 
@@ -60,7 +54,7 @@ public class MailController {
             message.setUser(userService.getUserShort(message.getSender()));
             mav.setViewName("message");
             mav.addObject("message", message);
-            if (message.getRecipient().equals(authService.getLogedUserID(request))) {
+            if (message.getRecipient().equals(AuthUtils.getLogedUserID(request))) {
                 mailService.markMessageAsRead(message.getId());
             }
         } else {
@@ -91,9 +85,9 @@ public class MailController {
     public ModelAndView writeNewMessage(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("message");
         Message message = new Message();
-        message.setUser(userService.getUserShort(authService.getLogedUserID(request)));
+        message.setUser(userService.getUserShort(AuthUtils.getLogedUserID(request)));
         mav.addObject("message", message);
-        mav.addObject("recipients", userService.getForWhoUserCanWrite(authService.getLogedUserID(request)));
+        mav.addObject("recipients", userService.getForWhoUserCanWrite(AuthUtils.getLogedUserID(request)));
 
         return mav;
     }
@@ -101,27 +95,27 @@ public class MailController {
 
     @ResponseBody
     @RequestMapping(value = "/mail/write", method = RequestMethod.POST)
-    public ModelAndView sendMessage(HttpServletRequest request,
-                                    @RequestParam Integer recipient,
-                                    @RequestParam String theme,
-                                    @RequestParam String content) throws Exception {
-        ModelAndView mav = new ModelAndView("redirect:/mail");
-
+    public String sendMessage(HttpServletRequest request,
+                                @RequestParam Integer recipient,
+                                @RequestParam String theme,
+                                @RequestParam String content) throws Exception {
         Message message = new Message();
-        message.setSender(authService.getLogedUserID(request));
+        message.setSender(AuthUtils.getLogedUserID(request));
         message.setRecipient(recipient);
         message.setTheme(theme);
         message.setText(content);
         message.setmDate(new java.sql.Timestamp(new java.util.Date().getTime()));
         mailService.sendMessage(message);
-        return mav;
+
+        return "redirect:/mail";
     }
 
 
     @ResponseBody
     @RequestMapping(value = "/mail/delete")
-    public void deleteMessage(@RequestParam Integer id, HttpServletRequest request) throws Exception {
-        mailService.deleteMessage(authService.getLogedUserID(request), id);
+    public void deleteMessage(HttpServletRequest request,
+                                @RequestParam Integer id) throws Exception {
+        mailService.deleteMessage(AuthUtils.getLogedUserID(request), id);
     }
 
 }
