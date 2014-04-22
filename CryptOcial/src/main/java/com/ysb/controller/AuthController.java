@@ -3,30 +3,32 @@ package com.ysb.controller;
 import com.ysb.model.entity.User;
 import com.ysb.model.service.AuthService;
 import com.ysb.model.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+// TODO use cookies to remember me
 
 @Controller
 public class AuthController {
 
+    @Autowired
+    AuthService authService;
+
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView loginView(HttpServletRequest request) throws Exception {
-        ModelAndView mav = new ModelAndView();
-
-        if(AuthService.isLogged(request)){
-            mav.setViewName("redirect:/");
+    public String loginView(HttpServletRequest request) throws Exception {
+        if (authService.isLogged(request)) {
+            return "redirect:/";
         } else {
-            mav.setViewName("login");
+            return "intro";
         }
-
-        return mav;
     }
-
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -39,57 +41,53 @@ public class AuthController {
                         HttpServletRequest request) throws Exception {
 
 
-        if(action.equals("login")){
-            User user = UserService.getUser(login, password);
-            if(user != null){
-                AuthService.setLogedUserID(user.getId(), request);
-                AuthService.setUserOnline(user.getId());
-//            boolean rememberMe = request.getParameter("rememberMe").equals("on");
+        if (action.equals("login")) {
+            User user = userService.getUser(login, password);
+            if (user != null) {
+                authService.login(user.getId(), request);
+/*
+            boolean rememberMe = request.getParameter("rememberMe").equals("on");
 
-//            if(rememberMe) {
-//                Cookie rememberMeCookie = new Cookie("userID", userID.toString());
-//                rememberMeCookie.setHttpOnly(true);
-//                rememberMeCookie.setMaxAge(7*24*60*60);
-//                response.addCookie(rememberMeCookie);
-//            }
+            if(rememberMe) {
+                Cookie rememberMeCookie = new Cookie("userID", userID.toString());
+                rememberMeCookie.setHttpOnly(true);
+                rememberMeCookie.setMaxAge(7*24*60*60);
+                response.addCookie(rememberMeCookie);
+            }
+*/
 
                 return "redirect:/";
             }
         } else {
-            System.out.printf("in reg post : ");
-            System.out.printf(name + " " );
-            System.out.printf(surname + " " );
-            System.out.printf(email + " " );
-            System.out.printf(password + " " );
-
-            boolean res = UserService.saveUser(name, surname, email, password);
+            if (userService.isMailFree(email)) {
+                userService.saveUser(name, surname, email, password);
+                authService.login(userService.getUser(email, password).getId(), request);
+            }
         }
-
-
 
         return "redirect:/login";
     }
-
 
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request,
                          HttpServletResponse response
                          /*@CookieValue(value = "userID", defaultValue = "-1") String userIDCookie*/) throws Exception {
-        HttpSession session = request.getSession();
 
-//        if(!userIDCookie.equals("-1")){
-//            Cookie rememberMeCookie = new Cookie("userID", "-1");
-//            rememberMeCookie.setHttpOnly(true);
-//            rememberMeCookie.setMaxAge(0);
-//            response.addCookie(rememberMeCookie);
-//        }
+/*
+        if(!userIDCookie.equals("-1")){
+            Cookie rememberMeCookie = new Cookie("userID", "-1");
+            rememberMeCookie.setHttpOnly(true);
+            rememberMeCookie.setMaxAge(0);
+            response.addCookie(rememberMeCookie);
+        }
+*/
 
-        if(AuthService.isLogged(request)){
-            AuthService.logout(request);
+        if (authService.isLogged(request)) {
+            authService.logout(request);
         }
 
-        return "redirect:login";
+        return "redirect:/login";
     }
 
 }

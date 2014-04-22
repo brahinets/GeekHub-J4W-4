@@ -4,13 +4,6 @@
 <html>
 <head>
     <title>...people count...</title>
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap-theme.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap-theme.min.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap.min.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/global.css"/>" type="text/css">
-	<link rel="stylesheet" href="<c:url value="/res/css/user.css"/>" type="text/css">
-
 </head>
 
 <body>
@@ -27,14 +20,11 @@
         <!-- left nav bar end -->
 
         <div class="col-md-9 ">
-			<%--<ul class="nav nav-tabs nav-justified">
-				<li class="active"><a href="<c:url value="/people?category=friends"/>">Friends</a></li>
-				<li><a href="<c:url value="/people?category=subscribers"/>">My subscribers</a></li>
-				<li><a href="<c:url value="/people?category=subscribed"/>">I subscribed</a></li>
-			</ul>--%>
+            <div class="container">
+                <div class="listMenu col-md-6">
+                    <form name="advancedSearch" action="/searchAdvanced" method="get">
+                    <input class="form-control" type="search" placeholder="Name | Surname">
 
-			<div class="container">
-				<div class="listMenu col-md-6">
                     <c:forEach items="${usersList}" var="human">
                         <div class="row">
                             <div class="col-md-1 listItem listPhoto">
@@ -50,9 +40,8 @@
                                 </a>
                             </div>
                             <div class="col-md-2 listItem listShort">
-                                <div>${human.name}</div>
-                                <div>${human.surname}</div>
-                                <div>${human.birthdate}</div>
+                                <div>${human.name} ${human.surname}</div>
+                                <div>${human.whereFrom}</div>
                                 <c:choose>
                                     <c:when test="${human.isOnline}">
                                         <div><span class="online">Online</span></div>
@@ -154,7 +143,7 @@
 						<ul class="nav nav-pills nav-justified">
 							<li>
 								<select class="form-control">
-									<option>from</option>
+									<option>whereFrom</option>
 									<option>2</option>
 									<option>3</option>
 									<option>4</option>

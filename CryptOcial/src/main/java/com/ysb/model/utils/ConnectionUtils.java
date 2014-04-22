@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class ConnectionUtils {
 
-    /* return connection to database
+    /** return connection to database
      *      dName    = 'cryptotial'
      *      userName = 'root'
      *      userPass = ''
@@ -40,4 +40,5 @@ public class ConnectionUtils {
             }
         }
     }
+
 }

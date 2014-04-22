@@ -6,12 +6,8 @@
 <html>
 <head>
     <title>${user.name} ${user.surname}</title>
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap-theme.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap-theme.min.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap.min.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/global.css"/>" type="text/css">
-	<link rel="stylesheet" href="<c:url value="/res/css/user.css"/>" type="text/css">
+    <script src="<c:url value="/res/js/like.js"/>"></script>
+    <script src="<c:url value="/res/js/actions.js"/>"></script>
 </head>
 
 <body>
@@ -20,7 +16,7 @@
 	<!-- top nav bar start -->
 	    <jsp:include page="topNavBar.jsp"/>
 	<!-- top nav bar end -->
-	
+
 	<!-- body start -->
 	<div class="row">
 		<!-- left nav bar start -->
@@ -42,53 +38,95 @@
 				</div>
 
 
+                <!-- user actions block start -->
                 <c:choose>
                     <c:when test="${myID != user.id}">
                         <div id="userActions">
-                            <!-- ADD|DELETE relation button -->
-                            <button class="blueButton full-width" >
                                 <c:choose>
-                                    <%--<li>Checkins<strong>344</strong></li>--%>
                                     <c:when test="${user.relation == 'friend'}">
-                                        <span class="typicons-minus buttonIcon"></span>
-                                        <span class="buttonText"><a href="/friend/delete/${user.id}">Delete friend</a></span>
-
+                                        <a class="btn full-width" href="/friend/delete/${user.id}">
+                                            <button class="full-width blueButton" type="submit">
+                                                <span class="buttonText">Delete friend</span>
+                                            </button>
+                                        </a>
                                     </c:when>
                                     <c:when test="${user.relation == 'subscriber'}">
-                                        <span class="typicons-minus buttonIcon"></span>
-                                        <span class="buttonText"><a href="/friend/submit/${user.id}">Submit friend</a></span>
+                                        <a class="btn full-width" href="/friend/submit/${user.id}">
+                                            <button class="full-width blueButton" type="submit">
+                                                <span class="buttonText">Submit friend</span>
+                                            </button>
+                                        </a>
                                     </c:when>
                                     <c:when test="${user.relation == 'subscribed'}">
-                                        <span class="typicons-minus buttonIcon"></span>
-                                        <span class="buttonText"><a href="/subscriber/delete/${user.id}">Unsubscribe</a></span>
+                                        <a class="btn full-width" href="/subscriber/delete/${user.id}">
+                                            <button class="full-width blueButton" type="submit">
+                                                <span class="buttonText">Unsubscribe</span>
+                                            </button>
+                                        </a>
                                     </c:when>
                                     <c:otherwise>
-                                        <span class="typicons-minus buttonIcon"></span>
-                                        <span class="buttonText"><a href="/friend/add/${user.id}">Add to friends</a></span>
+                                        <a class="btn full-width" href="/friend/add/${user.id}">
+                                            <button class="full-width blueButton" type="submit">
+                                                <span class="buttonText">Add to friends</span>
+                                            </button>
+                                        </a>
                                     </c:otherwise>
                                 </c:choose>
-                            </button >
-
 
                             <!-- write message button -->
                             <c:choose>
                                 <c:when test="${user.canWrite}">
-                                    <button class="blueButton full-width">
-                                        <span class="typicons-minus buttonIcon"></span>
-                                        <span class="buttonText"><a href="/mail/write/${user.id}">Write message</a></span>
-                                    </button>
+                                    <a class="btn full-width" href="/mail/write/${user.id}">
+                                        <button class="full-width blueButton" type="submit">
+                                            <span class="buttonText">Write message</span>
+                                        </button>
+                                    </a>
                                 </c:when>
                             </c:choose>
+
+                            <!-- write blacklist button -->
+                            <c:choose>
+                                <c:when test="${!user.isInMyBlackListWrite}">
+                                    <a class="btn full-width" href="/blacklist/write/add/${user.id}">
+                                        <button class="full-width blueButton" type="submit">
+                                            <span class="buttonText">Add to Write black list </span>
+                                        </button>
+                                    </a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a class="btn full-width" href="/blacklist/write/delete/${user.id}">
+                                        <button class="full-width blueButton" type="submit">
+                                            <span class="buttonText">Delete whereFrom Write black list</span>
+                                        </button>
+                                    </a>
+                                </c:otherwise>
+                            </c:choose>
+
+
+                            <!-- post blacklist button -->
+                            <c:choose>
+                                <c:when test="${!user.isInMyBlackListPost}">
+                                    <a class="btn full-width" href="/blacklist/post/add/${user.id}">
+                                        <button class="full-width blueButton" type="submit">
+                                            <span class="buttonText">Add to Post black list </span>
+                                        </button>
+                                    </a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a class="btn full-width" href="/blacklist/post/delete/${user.id}">
+                                        <button class="full-width blueButton" type="submit">
+                                            <span class="buttonText">Delete whereFrom Post black list</span>
+                                        </button>
+                                    </a>
+                                </c:otherwise>
+                            </c:choose>
+
                         </div>
                     </c:when>
                 </c:choose>
-				<!-- user actions block start -->
+				<!-- user actions block end -->
 
-
-
-				<!-- user actions block end -->	
-				
-				<!-- user relation block start -->	
+				<!-- user relation block start -->
 				<div id="userRelation">
                     <!-- start of my friends widget -->
 					<div class="widget">
@@ -104,7 +142,7 @@
                                         <div class="cell">
                                             <div class="widgetImage">
                                                 <c:choose>
-                                                    <c:when test="${user.avatar != null}">
+                                                    <c:when test="${human.avatar != null}">
                                                         <a href="/user/${human.id}"><img src="data:image/png;base64,${human.avatar}"/></a>
                                                     </c:when>
                                                     <c:otherwise>
@@ -142,7 +180,7 @@
                                         <div class="cell">
                                             <div class="widgetImage">
                                                 <c:choose>
-                                                    <c:when test="${user.avatar != null}">
+                                                    <c:when test="${human.avatar != null}">
                                                         <a href="/user/${human.id}"><img src="data:image/png;base64,${human.avatar}"/></a>
                                                     </c:when>
                                                     <c:otherwise>
@@ -179,7 +217,7 @@
                                         <div class="cell">
                                             <div class="widgetImage">
                                                 <c:choose>
-                                                    <c:when test="${user.avatar != null}">
+                                                    <c:when test="${human.avatar != null}">
                                                         <a href="/user/${human.id}"><img src="data:image/png;base64,${human.avatar}"/></a>
                                                     </c:when>
                                                     <c:otherwise>
@@ -204,12 +242,12 @@
                     <!-- end of I subscribed widget -->
 
 				</div>
-				<!-- user relation block end -->	 	              				              	
-			</div> 
+				<!-- user relation block end -->
+			</div>
+
 
 			<div class="col-md-6 left" id="userBlockRight">
-
-				<!-- user status start -->	
+				<!-- user status start -->
 				<div id="simpleTop">
 					<div class="left" id="userName">
 						${user.name} ${user.surname}
@@ -222,9 +260,9 @@
                         </c:choose>
 					</div>
 				</div>
-				<!-- user status end -->	
+				<!-- user status end -->
 
-				<!-- user info start -->	
+				<!-- user info start -->
 				<div id="userInfo">
 					<div id="shortInfo">
 						<div class="miniblock">
@@ -237,60 +275,112 @@
 						</div>
 						<div class="miniblock">
 							<div class="label">Gender</div>
-							<div class="labeled">gender</div>
+                            <c:choose>
+                                <c:when test="${user.gender}">
+                                    <div class="labeled">Male</div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="labeled">Female</div>
+                                </c:otherwise>
+                            </c:choose>
+
 						</div>
                         <div class="miniblock">
 							<div class="label">Birth Date</div>
-							<div class="labeled"><fmt:formatDate type="date" value="${user.birthdate}" /></div>
+							<div class="labeled"><fmt:formatDate type="date" value="${user.birthDate}" /></div>
 						</div>
 					</div>
 				</div>
-				<!-- user info end -->	
+				<!-- user info end -->
 
-				<!-- wall start -->	
+				<!-- wall start -->
 				<div id="wall">
 					<div id="wallHead">
-						<span class="notesCount">1234posts</span>
+						<span class="count full-height" id="postsCount">${fn:length(user.posts)} </span><span class="notesCount" > posts</span>
 						<span class="right">to other posts</span>
 					</div>
 
                     <c:choose>
-                        <c:when test="${user.canPost || myID == user.id}">
-                            <div id="submitBlock" ondblclick="hidePostButton(addPostButton)">
-                                <textarea id="addPost" onfocus="showPostButton(addPostButton)" placeholder="What's new?"></textarea>
-                                <button id="addPostButton" class="blueButton" style="display:none;">Post</button>
-                            </div>
+                        <c:when test="${user.canPost}">
+                            <form name="addPost" action="<c:url value="/post/add"/>" method="post">
+                                <div id="submitBlock" <%--ondblclick="hidePostButton(addPostButton)"--%>>
+                                    <textarea id="addPost" <%--onfocus="showPostButton(addPostButton)" --%> placeholder="What's new?" name="content" required="required"></textarea>
+                                    <button id="addPostButton" type="submit" class="blueButton" <%--style="display:none;"--%>>Post</button>
+                                    <input type="hidden" value="${user.id}" name="recipient">
+                                </div>
+                            </form>
                         </c:when>
                     </c:choose>
 
-					
+
 					<div id="postBlock">
-						<div id="post1" class="post">
-							<div class="imgMini">
-								<img src="<c:url value="/res/img/mini.jpg"/>"/>
-								<span class="online">Online</span>
-							</div>
-							<div class="postInfo">
-								<div class="textName">
-									<a href="asdsf">Yarik</a>
-								</div>
-								<div class="text">
-									sadfgs sadfgs sadfgs sadfgs 									sadfgs sadfgs sadfgs sadfgs 									sadfgs sadfgs sadfgs sadfgs 		sadfgs sadfgs sadfgs sadfgs 									sadfgs sadfgs sadfgs sadfgs 									sadfgs sadfgs sadfgs sadfgs 		sadfgs sadfgs sadfgs sadfgs 									sadfgs sadfgs sadfgs sadfgs 							
-								</div>
-								<div class="replyBlock">
-									<div class="dateBlock">date</div>
-									<div class="separator" style="float:left;">|</div>
-									<div class="commentLink">comment link</div>
-									<div class="likeBlock">like block</div>
-								</div>
-							</div>
-						</div>
+                        <c:forEach items="${user.posts}" var="post">
+                            <div id="post${post.id}" class="post">
+                                <div class="imgMini">
+                                <c:choose>
+                                    <c:when test="${user.avatar != null}">
+                                        <img src="data:image/png;base64,${post.user.avatar}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="<c:url value="/res/img/noAvatar.png"/>"/>
+                                    </c:otherwise>
+                                </c:choose>
+                                <c:choose>
+                                    <c:when test="${post.user.isOnline}">
+                                        <span class="online">Online</span>
+                                    </c:when>
+                                </c:choose>
+                                </div>
+
+                                <div class="postInfo">
+                                    <div class="textName">
+                                        <a href="/user/${post.user.id}">${post.user.name} ${post.user.surname}</a>
+                                    </div>
+                                    <div class="text">
+                                            ${post.content}
+                                    </div>
+                                    <div class="replyBlock">
+                                        <div class="dateBlock">date</div>
+                                        <div class="separator" style="float:left;">|</div>
+                                        <c:choose>
+                                            <c:when test="${post.user.id == myID}">
+                                                <span class="action" onclick="postDelete(${post.id})">Delete</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="action" onclick="postSpam(${post.id}, true)">It spam</span>
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                        <div class="likeBlock" onclick="like(${post.id}, 'post')">
+                                        <c:choose>
+                                            <c:when test="${post.isLiked}">
+                                                <span id="likeBlock${post.id}" style="display: none;">
+                                                    Like <span class="entypo-thumbs-up"></span> ${post.likesCount-1}
+                                                </span>
+                                                <span id="dislikeBlock${post.id}">
+                                                    Unlike <span class="entypo-thumbs-down"></span> ${post.likesCount}
+                                                </span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span id="likeBlock${post.id}">
+                                                    Like <span class="entypo-thumbs-up"></span> ${post.likesCount}
+                                                </span>
+                                                <span id="dislikeBlock${post.id}" style="display: none;">
+                                                    Unlike <span class="entypo-thumbs-down"></span> ${post.likesCount+1}
+                                                </span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
 					</div>
 				</div>
-				<!-- wall end -->									
-				
-
+				<!-- wall end -->
 			</div>
+            <!-- right user block end -->
 	  	</div>
 	  	<!-- user block end -->
 	</div>

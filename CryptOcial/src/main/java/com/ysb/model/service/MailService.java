@@ -1,57 +1,68 @@
 package com.ysb.model.service;
 
-import com.ysb.model.dao.MessageDAOimpl;
+import com.ysb.model.dao.MailDAOimpl;
 import com.ysb.model.entity.Message;
-import flexjson.JSONSerializer;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
-/**
- * Created by Yarik on 22.03.14.
- */
-//@Service
+@Service
 public class MailService {
-    static MessageDAOimpl messageDAOimpl = new MessageDAOimpl();
+    @Autowired
+    private MailDAOimpl mailDAOimpl;
 
-    public static Message getMessageByID(Integer id) throws Exception {
-        Message message = messageDAOimpl.getMessageByID(id);
-        message.setUser(UserService.getUserShort(message.getSender()));
+    @Autowired
+    private UserService userService;
+
+
+    public Message getMessageByID(Integer id) throws Exception {
+        Message message = mailDAOimpl.get(id);
+        message.setUser(userService.getUserShort(message.getSender()));
 
         return message;
     }
 
 
-    public static List<Message> getOutputMessagesByUserID(Integer id) throws Exception {
-        List<Message> messages = messageDAOimpl.getOutputMessagesByUserID(id);
-
-        for(Message message : messages){
-//            message.setUser(UserService.getUserShort(message.getRecipient()));
-
-
+    public Collection<Message> getOutputMessages(Integer id) throws Exception {
+        Collection<Message> mail = mailDAOimpl.getOutputMessages(id);
+        for(Message message : mail){
+            message.setUser(userService.getUser(message.getRecipient()));
         }
 
-        return messages;
+        return mail;
     }
 
 
-    public static List<Message> getInputMessagesByUserID(Integer id) throws Exception {
-        List<Message> messages = messageDAOimpl.getInputMessagesByUserID(id);
-        List<String> messagesS = new ArrayList<>();
-
-        for(Message message : messages){
-//            message.setUser(UserService.getUserShort(message.getSender()));
+    public Collection<Message> getInputMessages(Integer id) throws Exception {
+        Collection<Message> mail = mailDAOimpl.getInputMessages(id);
+        for(Message message : mail){
+            message.setUser(userService.getUser(message.getSender()));
         }
 
-        return messages;
+        return mail;
     }
 
 
-    public static boolean sendMessage(Message message) throws Exception {
-        return messageDAOimpl.sendMessage(message);
+    public void sendMessage(Message message) throws Exception {
+        mailDAOimpl.save(message);
+    }
+
+
+    public void markMessageAsRead(Integer id) {
+        mailDAOimpl.markMessageAsRead(id);
+    }
+
+
+    public void deleteMessage(Integer userID, Integer messageID) throws Exception {
+        Message message = getMessageByID(messageID);
+        if (message != null) {
+            if (message.getRecipient().equals(userID)) {
+                mailDAOimpl.deleteByRecipient(message.getId());
+            } else {
+                mailDAOimpl.deleteBySender(message.getId());
+            }
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 package com.ysb.model.entity;
 
+import com.ysb.model.dao.MailDAOimpl;
 import com.ysb.model.utils.Utils;
 
 import java.util.Collection;
@@ -7,14 +8,16 @@ import java.util.Date;
 
 
 public class User extends Entity {
-
-
     private Boolean isOnline = false;
     private String name = null;
     private String surname = null;
+    private String whereFrom = null;
     private String password = null;
-    private Date birthdate = null;
+    private Date birthDate = null;
     private String email = null;
+    private Boolean gender = null;
+
+    private Boolean isActive = true;
 
     public User() {
     }
@@ -31,10 +34,10 @@ public class User extends Entity {
     private Integer countFriends = null;
 
     @Ignore
-    private Integer unreadInputMail = null;
+    private Boolean isInMyBlackListWrite = false;
 
     @Ignore
-    private Boolean isInMyBlackList = false;
+    private Boolean isInMyBlackListPost = false;
 
     @Ignore
     private Boolean canWrite = null;
@@ -56,6 +59,18 @@ public class User extends Entity {
     @Ignore
     private Collection<User> listOfWhoSubscribedOnMe = null;
 
+    @Ignore
+    private Collection<Post> posts = null;
+
+    public User(int id, String name, String surname, byte[] currentAvatar, boolean isOnline, String from) {
+        this.setId(id);
+        this.name = name;
+        this.surname = surname;
+        this.currentAvatar = currentAvatar;
+        this.isOnline = isOnline;
+        this.whereFrom = from;
+    }
+
     public String getName() {
         return name;
     }
@@ -72,12 +87,12 @@ public class User extends Entity {
         this.surname = surname;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getPassword() {
@@ -88,9 +103,9 @@ public class User extends Entity {
         this.password = password;
     }
 
-    public Integer getUnreadInputMail() {return unreadInputMail; }
-
-    public void setUnreadInputMail(Integer unreadInputMail) { this.unreadInputMail = unreadInputMail; }
+    public Integer getUnreadInputMail() {
+        return new MailDAOimpl().getUnreadMailCount(this.getId());
+    }
 
     public String getEmail() {
         return email;
@@ -113,22 +128,8 @@ public class User extends Entity {
         return listOfWhoSubscribedOnMe;
     }
 
-    public void setListOfWhoSubscribedOnMe(Collection<User> listOfWhoSubscribedOnMe) { this.listOfWhoSubscribedOnMe = listOfWhoSubscribedOnMe; }
-
-    public boolean isCanWrite() {
-        return canWrite;
-    }
-
-    public void setCanWrite(boolean canWrite) {
-        this.canWrite = canWrite;
-    }
-
-    public boolean isCanPost() {
-        return canPost;
-    }
-
-    public void setCanPost(boolean canPost) {
-        this.canPost = canPost;
+    public void setListOfWhoSubscribedOnMe(Collection<User> listOfWhoSubscribedOnMe) {
+        this.listOfWhoSubscribedOnMe = listOfWhoSubscribedOnMe;
     }
 
     public String getRelation() {
@@ -155,28 +156,20 @@ public class User extends Entity {
         this.countFriends = countFriends;
     }
 
-    public Boolean getIsInMyBlackList() {
-        return isInMyBlackList;
+    public Boolean getIsInMyBlackListPost() {
+        return isInMyBlackListPost;
     }
 
-    public void setIsInMyBlackList(Boolean isInMyBlackList) {
-        this.isInMyBlackList = isInMyBlackList;
+    public void setIsInMyBlackListPost(Boolean isInMyBlackListPost) {
+        this.isInMyBlackListPost = isInMyBlackListPost;
     }
 
-    public Boolean getCanWrite() {
-        return canWrite;
+    public Boolean getIsInMyBlackListWrite() {
+        return isInMyBlackListWrite;
     }
 
-    public void setCanWrite(Boolean canWrite) {
-        this.canWrite = canWrite;
-    }
-
-    public Boolean getCanPost() {
-        return canPost;
-    }
-
-    public void setCanPost(Boolean canPost) {
-        this.canPost = canPost;
+    public void setIsInMyBlackListWrite(Boolean isInMyBlackListWrite) {
+        this.isInMyBlackListWrite = isInMyBlackListWrite;
     }
 
     public byte[] getCurrentAvatar() {
@@ -195,10 +188,58 @@ public class User extends Entity {
         this.listFriends = listFriends;
     }
 
+    public Boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(Boolean gender) {
+        this.gender = gender;
+    }
+
+    public String getWhereFrom() {
+        return whereFrom;
+    }
+
+    public void setWhereFrom(String whereFrom) {
+        this.whereFrom = whereFrom;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public Collection<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Collection<Post> posts) {
+        this.posts = posts;
+    }
+
     public String getAvatar() {
         if (this.currentAvatar != null)
             return Utils.bytesToBase64(this.currentAvatar);
         else
             return null;
+    }
+
+    public Boolean getCanWrite() {
+        return canWrite;
+    }
+
+    public void setCanWrite(Boolean canWrite) {
+        this.canWrite = canWrite;
+    }
+
+    public Boolean getCanPost() {
+        return canPost;
+    }
+
+    public void setCanPost(Boolean canPost) {
+        this.canPost = canPost;
     }
 }

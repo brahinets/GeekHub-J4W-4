@@ -1,6 +1,5 @@
 /*@import url(http://weloveiconfonts.com/api/?family=entypo|typicons|fontawesome|maki);*/
 
-
 /* typicons */
 [class*="typicons-"]:before {
     font-family: 'Typicons', sans-serif;
@@ -16,111 +15,117 @@
     font-family: 'fontawesome', sans-serif;
 }
 
-/* fontawesome */
+/* maki */
 [class*="maki-"]:before {
     font-family: 'maki', sans-serif;
 }
 
-.noMargin{
+.noMargin {
     margin: 0;
 }
 
-/**{
-	border-radius: 0px!important;
-}
-*/
-.icon-left{
-    margin-right:5px;
+.icon-left {
+    margin-right: 5px;
 }
 
-.icon-right{
-    margin-left:5px;
+.icon-right {
+    margin-left: 5px;
 }
 
-::selection {background:transparent; color:#272822;}
+::selection {
+    background: transparent;
+    color: #272822;
+}
+
+.action{
+    cursor: pointer;
+}
+.action:hover{
+    color: #53632f;
+    text-decoration: underline;
+    font-weight: bold;
+}
 
 
-.leftNavBar{
+
+.leftNavBar {
     overflow: hidden;
-    margin-top:50px;
-    font:23px bold  Arial;
-    color:#4B4B4B;
-    padding:5px;
+    margin-top: 50px;
+    font: 23px bold Arial;
+    color: #4B4B4B;
+    padding: 5px;
     background: none;
 }
 
-.container{
+.container {
     overflow: hidden;
     min-height: 90%;
 }
 
-.listMenu{
-    float:left;
+.listMenu {
+    float: left;
 }
-
 
 .full-width {
-    width: 100%;
+    width: 99%;
 }
 
-
-.wHalf{
+.wHalf {
     width: 50%;
 }
 
-.mailList{
+.mailList {
 
 }
 
-.listItem{
-    height:150px;
+.listItem {
+    height: 150px;
 }
 
-.listPhoto{
-    width:160px;
-    padding:5px;
+.listPhoto {
+    width: 160px;
+    padding: 5px;
 }
 
-.listPhoto img{
-    height:100%;
+.listPhoto img {
+    height: 100%;
     width: 100%;
-    display:block;
+    display: block;
 }
 
-.mailShort{
-    padding:10px;
-    display:block;
-    width:460px;
+.mailShort {
+    padding: 10px;
+    display: block;
+    width: 460px;
 }
 
-.listShort{
-    padding:10px;
-    display:block;
-    width:250px;
+.listShort {
+    padding: 10px;
+    display: block;
+    width: 250px;
 }
 
-.listAction{
-    display:block;
-    padding:10px;
-    width:150px;
+.listAction {
+    display: block;
+    padding: 10px;
+    width: 150px;
 }
 
-.searchMenu{
-    padding:25px 30px;
+.searchMenu {
+    padding: 25px 30px;
 }
-
 
 /* start widget part */
 .widget {
-    margin-top:10px;
+    margin-top: 10px;
 }
 
-.widget .head{
-    background:#DEE5EB;
-    color:#EF933A;
+.widget .head {
+    background: #DEE5EB;
+    color: #EF933A;
     font: bold 15px Arial;
     padding: 3px 0 3px 10px;
-    overflow:hidden
+    overflow: hidden
 }
 
 .widget .boxy {
@@ -128,52 +133,55 @@
     border: 1px solid #ccc;
     border-top: 0;
     background: #f9f9f9;
-    display:block;
-    text-align:center;
+    display: block;
+    text-align: center;
 }
-
 
 .widget .boxy .cell {
     border: 1px solid #ccc;
-    border-radius:4px;
-    text-align:center;
+    border-radius: 4px;
+    text-align: center;
     padding: 1px;
     margin-top: 3px;
     margin-bottom: 1px;
-    width:30%;
+    width: 30%;
     display: inline-block;
-    vertical-align:top;
+    vertical-align: top;
 }
 
-.widget .boxy .cell:hover{
+.widget .boxy .cell:hover {
     background: #DEE5EB;
 }
 
-.widget .boxy .cell .widgetImage img{
+.widget .boxy .cell .widgetImage img {
     border-radius: 2px 2px 0 0;
-    width:100%;
-
+    width: 100%;
+    height: 70px;
 }
 
-.widget .boxy .cell .widgetText{
-    font:italic 13px Georgia, serif;
-    overflow:hidden;
+.buttonText a {
+    display: block;
+    color: #d1e8ff;
+}
+
+.widget .boxy .cell .widgetText {
+    font: italic 13px Georgia, serif;
+    overflow: hidden;
     min-height: 35px;
-    margin:0 2 0 2;
+    margin: 0 2px 0 2px;
 }
+
 /* end widget part */
 
-
-.cell a *{
-    display : block;
+.cell a * {
+    display: block;
 }
 
-
-.online{
+.online {
     color: #AAB7C5;
 }
 
-.blueButton{
+.blueButton {
     display: block;
     padding: 4px 16px;
     font: 15px Arial;
@@ -185,195 +193,191 @@
     color: #FFF;
 }
 
-#userBlockLeft #userPhoto img{
+#userBlockLeft #userPhoto img {
     box-sizing: border-box;
-    width:100%;
-    display:block;
-    height:320px;
+    width: 100%;
+    display: block;
+    height: 320px;
     background: #fff;
     border: 1px solid #ccc;
 }
 
-#simpleTop{
-    height:30px;
-    font-size:20px;
-    border-bottom:1px solid;
-    border-color:#E4E4E4;
+#simpleTop {
+    height: 30px;
+    font-size: 20px;
+    border-bottom: 1px solid;
+    border-color: #E4E4E4;
 }
 
-#userName{
+#userName {
     font: 20px Arial;
     color: #449BD6;
 }
 
-
 #userInfo #shortInfo {
-    margin-top:10px;
+    margin-top: 10px;
 }
 
-.miniblock{
+.miniblock {
     line-height: 140%;
     font-size: 12px;
-    font-family: tahoma, arial, verdana, Lucida Sans,serif;
+    font-family: tahoma, arial, verdana, Lucida Sans, serif;
     font-weight: normal;
     -webkit-font-smoothing: subpixel-antialiased;
-    overflow:hidden;
+    overflow: hidden;
 }
 
-.label{
-    overflow:hidden;
+.label {
+    overflow: hidden;
     box-sizing: border-box;
-    width:33%;
+    width: 33%;
     color: #777;
-    display:inline-block;
+    display: inline-block;
 }
 
-.margin-bootom-ten{
+.margin-bootom-ten {
     margin-bottom: 10px;
 }
 
-.none-bg{
+.none-bg {
     background: none;
 }
 
-.labeled{
+.labeled {
     box-sizing: border-box;
-    display:inline-block;
-    width:66%;
-    overflow:hidden;
+    display: inline-block;
+    width: 66%;
+    overflow: hidden;
 }
 
 .clickableBlock {
-    margin-top:10px;
-    display:block;
-    background:#FFF213;
+    margin-top: 10px;
+    display: block;
+    background: #FFF213;
 }
 
-
-#wall{
-    margin-top:20px;
+#wall {
+    margin-top: 20px;
 }
 
-#wall #wallHead{
+#wall #wallHead {
     padding: 5px 5px;
-    background:#DEE5EB;
-}
-
-#wall #submitBlock{
-    background:#F1F1F1;
-    position:relative;
-    padding: 5px 5px;
-    margin-bottom:10px;
-}
-
-#wall #submitBlock textarea{
-    color: #444;
-    box-sizing: border-box;
-    display:block;
-    font-size: 13px;
-    padding: 3px;
-    width: 100%;
-    -webkit-appearance: textarea;
-    font-family: Tahoma, Verdana, Arial, Sans-Serif, Lucida Sans,serif;
+    background: #DEE5EB;
 }
 
 #wall #submitBlock {
-    display:block;
+    background: #F1F1F1;
+    position: relative;
+    padding: 5px 5px;
+    margin-bottom: 10px;
 }
 
-#wall #postBlock{
-    margin-top:5px;
+#wall #submitBlock textarea {
+    color: #444;
+    box-sizing: border-box;
+    display: block;
+    font-size: 13px;
+    max-width: 100%;
+    padding: 3px;
+    width: 100%;
+    -webkit-appearance: textarea;
+    font-family: Tahoma, Verdana, Arial, Sans-Serif, Lucida Sans, serif;
 }
 
-#wall #postBlock .post{
-    overflow:hidden;
+#wall #submitBlock {
+    display: block;
+}
+
+#wall #postBlock {
+    margin-top: 5px;
+}
+
+#wall #postBlock .post {
+    overflow: hidden;
     min-height: 80px;
-    width:auto;
-    position:relative;
-    border-bottom:1px solid;
-    border-color:#F1F1F1;
+    width: auto;
+    position: relative;
+    border-bottom: 1px solid;
+    border-color: #F1F1F1;
 }
 
-
-.imgNormal{
+.imgNormal {
 
 }
 
-.imgNormal span{
+.imgNormal span {
     padding: 0 5px;
 }
 
-.imgNormal img{
+.imgNormal img {
     width: 120px;
     height: 120px;
     display: block;
 }
 
-
-#wall #postBlock .post .imgMini{
+#wall #postBlock .post .imgMini {
+    padding-top: 5px;
     position: absolute;
 }
 
-#wall #postBlock .post .imgMini span{
+#wall #postBlock .post .imgMini span {
     padding: 0 5px;
 }
 
-#wall #postBlock .post .imgMini img{
+#wall #postBlock .post .imgMini img {
     width: 50px;
     height: 50px;
     display: block;
 }
 
-#wall #postBlock .post .postInfo{
+#wall #postBlock .post .postInfo {
     text-align: justify;
     margin-left: 60px;
     padding: 0 0 0;
-    position:relative;
+    position: relative;
 }
 
-#wall #postBlock .post .postInfo .textName{
-    overflow:hidden;
-    color:#2C88C7;
-    text-align:left;
-    padding:2px;
+#wall #postBlock .post .postInfo .textName {
+    overflow: hidden;
+    color: #2C88C7;
+    text-align: left;
+    padding: 2px;
     font: bold 15px Arial;
-    max-height:17px;
+    max-height: 17px;
 }
 
-#wall #postBlock .post .postInfo .text{
-    margin-bottom:5px;
+#wall #postBlock .post .postInfo .text {
+    margin-bottom: 5px;
 }
 
-#wall #postBlock .post .postInfo .replyBlock{
-    background:#6AD00B;
-    font-size:15px;
-    position:inherit;
+#wall #postBlock .post .postInfo .replyBlock {
+    font-size: 15px;
+    position: inherit;
     vertical-align: middle;
 }
 
-#wall #postBlock .post .postInfo .replyBlock .dateBlock{
-    color:#D4D4D4;
-    float:left;
+#wall #postBlock .post .postInfo .replyBlock .dateBlock {
+    color: #D4D4D4;
+    float: left;
 }
 
-#wall #postBlock .post .postInfo .replyBlock .commentLink{
-    float:left;
-    color:#2DB5E6;
+#wall #postBlock .post .postInfo .replyBlock .commentLink {
+    float: left;
+    color: #2DB5E6;
 }
 
-#wall #postBlock .post .postInfo .replyBlock .likeBlock{
-    float:right;
-    color:#5F8368;
+#wall #postBlock .post .postInfo .replyBlock .likeBlock {
+    float: right;
+    color: #5F8368;
 }
 
-.right{
-    float:right;
+.right {
+    float: right;
 }
 
-.left{
-    float:left;
+.left {
+    float: left;
 }
-
 
 .noscroll {
     overflow: hidden;
@@ -388,13 +392,13 @@
     word-wrap: break-word;
 }
 
-.separator{
+.separator {
     font-size: 110%;
     margin-left: 5px;
     margin-right: 5px;
-    margin-top:-1px;
-    font-weight:bold;
-    color:#505F69;
+    margin-top: -1px;
+    font-weight: bold;
+    color: #505F69;
 }
 
 /*	default	*/
@@ -410,26 +414,35 @@ a {
     cursor: pointer;
 }
 
+.blueButton a {
+    color: #fffff1;
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
 a:hover {
     text-decoration: underline;
 }
 
-
-
-.notesCount{
-    color:#2C86C5;
+.notesCount {
+    color: #2C86C5;
 }
 
-.count{
+.count {
     font-size: 80%;
-    color:#F58015;
+    color: #F58015;
+}
+
+.full-height{
+    font-size: 100%;
 }
 
 .number {
     color: #80ffa5;
 }
 
-.none-border{
+.none-border {
     border: none;
 }
 
@@ -441,19 +454,22 @@ a:hover {
     overflow: hidden;
 }
 
-.center{
+.center {
     text-align: center;
 }
 
-.message-user{
+.message-user {
     font-size: 15px;
     line-height: 120%;
 }
 
-.slogan{
-    color: #3c8eff;
+textarea {
+    max-width: 100%;
 }
 
+.slogan {
+    color: #3c8eff;
+}
 
 .lower {
     background: #ecf2f5;
@@ -469,8 +485,17 @@ a:hover {
 .error {
     color: #ac314b;
 }
+
 .success {
     color: #41ac37;
 }
 
+.notReadMessage {
+    background: #d1e8ff;
+}
 
+.nav-icon {
+    font-size: 15px;
+    margin-right: 8px;
+    vertical-align: middle;
+}

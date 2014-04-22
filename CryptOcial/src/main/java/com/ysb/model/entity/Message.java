@@ -2,29 +2,19 @@ package com.ysb.model.entity;
 
 import java.util.Date;
 
-public class Message extends Entity{
-
-    private Integer sender;
-    private Integer recipient;
-    private String theme;
-    private String text;
-    private Date mDate;
+public class Message extends Entity {
+    private Integer sender = null;
+    private Integer recipient = null;
+    private String theme = null;
+    private String text = null;
+    private Date mDate = null;
     private Boolean isRead = false;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
+    private Boolean isDeletedBySender = false;
+    private Boolean isDeletedByRecipient = false;
     @Ignore
     private User user;
 
-
-    public Message(){
-
+    public Message() {
     }
 
     public Message(Integer sender, Integer recipient, String theme, String text, Date mDate) {
@@ -76,20 +66,44 @@ public class Message extends Entity{
         this.text = text;
     }
 
-    public Boolean isRead() {
-        return isRead;
-    }
-
-    public void setRead(Boolean isRead) {
-        this.isRead = isRead;
-    }
-
     public Date getmDate() {
         return mDate;
     }
 
     public void setmDate(Date mDate) {
         this.mDate = mDate;
+    }
+
+    public Boolean getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(Boolean isRead) {
+        this.isRead = isRead;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Boolean getIsDeletedBySender() {
+        return isDeletedBySender;
+    }
+
+    public void setIsDeletedBySender(Boolean isDeletedBySender) {
+        this.isDeletedBySender = isDeletedBySender;
+    }
+
+    public Boolean getIsDeletedByRecipient() {
+        return isDeletedByRecipient;
+    }
+
+    public void setIsDeletedByRecipient(Boolean isDeletedByRecipient) {
+        this.isDeletedByRecipient = isDeletedByRecipient;
     }
 
 }

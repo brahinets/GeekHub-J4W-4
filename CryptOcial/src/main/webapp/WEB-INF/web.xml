@@ -19,7 +19,7 @@
 
     <filter>
         <filter-name>GatewayFilter</filter-name>
-        <filter-class>com.ysb.model.service.GatewayFilter</filter-class>
+        <filter-class>com.ysb.model.utils.GatewayFilter</filter-class>
     </filter>
 
     <filter-mapping>

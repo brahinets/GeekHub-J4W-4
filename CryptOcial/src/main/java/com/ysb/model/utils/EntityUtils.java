@@ -2,6 +2,7 @@ package com.ysb.model.utils;
 
 import com.ysb.model.entity.Entity;
 import com.ysb.model.entity.Ignore;
+import com.ysb.model.entity.User;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
@@ -11,9 +12,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Yarik on 04.03.14.
- */
 public class EntityUtils {
 
     /* converts object to map, could be helpful in save method */
@@ -58,4 +56,18 @@ public class EntityUtils {
     public static boolean isNull(Object object){
         return object == null;
     }
+
+
+    /* converts result of sql query to User object */
+    /*public static User extractUserShort(ResultSet rs) throws Exception {
+        User user = new User();
+        user.setId(rs.getInt("id"));
+        user.setName(rs.getString("name"));
+        user.setSurname(rs.getString("surname"));
+        user.setCurrentAvatar(rs.getBytes("currentAvatar"));
+        user.setIsOnline(rs.getBoolean("isOnline"));
+        user.setWhereFrom(rs.getString("whereFrom"));
+
+        return user;
+    }*/
 }

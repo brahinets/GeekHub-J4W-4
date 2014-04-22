@@ -1,52 +1,53 @@
 package com.ysb.model.dao;
 
+import com.ysb.model.entity.Gender;
 import com.ysb.model.entity.User;
 import com.ysb.model.utils.ConnectionUtils;
 import com.ysb.model.utils.EntityUtils;
 import com.ysb.model.utils.Utils;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.*;
 
 /**
- * Implementation of ActorDAO that uses database as a storage for objects.
+ * Implementation of UserDAO that uses database as a storage for objects.
  * It uses reflection to access objects fields and retrieve data to map to database tables.
  * As an identifier it uses field id of Entity class.
  */
-public class UserDAOimpl implements UserDAO {
-    MessageDAOimpl messageDAOimpl = new MessageDAOimpl();
 
+// TODO advanced searchSimple
+// TODO friends recommendation system
+// TODO user can choose who can write|post him (friends, all, ...)
 
-    /**
-     *  get user object from database storage by userID (if exists).
-     *  retreives ALL User data, and manually set ignored fields
-     */
+@Repository
+public class UserDAOimpl extends EntityDAOimpl implements UserDAO {
+    private String shortFields = " user.id, user.name, user.surname, user.currentAvatar, user.whereFrom, user.isOnline ";
+
+    @Override
     public User getUser(Integer id) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
         ResultSet rs;
         User user = null;
         List<User> queryResult;
-        String sqlGetUserByID = "SELECT * FROM user WHERE user.id = ?";
+        String sqlGetUserByID = "SELECT * FROM user WHERE user.id = ? AND user.isActive = ?";
 
         try {
             dbConnection = ConnectionUtils.getConnection();
             ps = dbConnection.prepareStatement(sqlGetUserByID);
             ps.setInt(1, id);
+            ps.setBoolean(2, true);
             rs = ps.executeQuery();
             queryResult = EntityUtils.extractResult(User.class, rs);
             rs.close();
 
             if (queryResult != null) {
                 user = queryResult.get(0);
-                user.setCountFriends(getFriendsCount(user.getId()));
-                user.setUnreadInputMail(messageDAOimpl.getUnreadMailCount(user.getId()));
-                user.setListFriends(getFriends(id));
-                user.setListOfWhoSubscribedOnMe(getSubscribers(id));
-                user.setListOnWhoIsubscribed(getSubscribed(id));
+
             }
         } catch (Exception e) {
-            Utils.exeption("getUser", e);
+            Utils.exception("getUser", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -56,26 +57,26 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /** check is user with specified id exists,
-     * if exists return user.id */
-    public User getUserByIDShort(Integer id) {
+    @Override
+    public User getUserShort(Integer id) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
         User user = null;
         ResultSet rs;
-        String sqlGetUserByID = "SELECT user.id, user.name, user.surname, user.currentAvatar, user.isOnline FROM user WHERE user.id = ? LIMIT 1";
+        String sqlGetUserByID = "SELECT " + shortFields + " FROM user WHERE user.id = ?  AND user.isActive = ? LIMIT 1";
 
         try {
             dbConnection = ConnectionUtils.getConnection();
             ps = dbConnection.prepareStatement(sqlGetUserByID);
             ps.setInt(1, id);
+            ps.setBoolean(2, true);
             rs = ps.executeQuery();
             if (rs.next()) {
-                user = new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline"));
+                user = new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline"), rs.getString("whereFrom"));
             }
             rs.close();
         } catch (SQLException e) {
-            Utils.exeption("getUserID", e);
+            Utils.exception("getUserShort", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -85,13 +86,12 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /** check is user with specified login and password exists,
-     * if exists return user.id */
+    @Override
     public Integer getUserID(String login, String password) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
         ResultSet rs;
-        String sqlGetUserByID = "SELECT user.id FROM user WHERE user.name = ? && user.password = ? LIMIT 1";
+        String sqlGetUserByID = "SELECT user.id FROM user WHERE user.email = ? AND user.password = ?  AND user.isActive = ? LIMIT 1";
         Integer userID = null;
 
         try {
@@ -99,13 +99,14 @@ public class UserDAOimpl implements UserDAO {
             ps = dbConnection.prepareStatement(sqlGetUserByID);
             ps.setString(1, login);
             ps.setString(2, password);
+            ps.setBoolean(3, true);
             rs = ps.executeQuery();
             if (rs.next()) {
                 userID = rs.getInt(1);
             }
             rs.close();
         } catch (SQLException e) {
-            Utils.exeption("getUserID (by login and pass)", e);
+            Utils.exception("getUserID (by login and pass)", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -114,60 +115,8 @@ public class UserDAOimpl implements UserDAO {
         return userID;
     }
 
-    /**
-     * save user to database. If user new (just registered) then insert new user,
-     * else, if user exists (changed some settings), then update */
-    public void save(User user) throws Exception {
-        Connection dbConnection = null;
-        Map<String, Object> data = EntityUtils.prepareEntity(user);
-        StringBuilder sql = new StringBuilder("");
-        StringBuilder keys = new StringBuilder("");
-        StringBuilder values = new StringBuilder("");
 
-        try {
-            dbConnection = ConnectionUtils.getConnection();
-
-            if (user.isNew()) {
-                sql.append("INSERT INTO USER ( ");
-
-                for (String key : data.keySet()) {
-                    keys.append(key).append(",");
-                    if(data.get(key) instanceof Boolean || data.get(key) == null){
-                        values.append(data.get(key)).append(",");
-                    } else {
-                        values.append("'").append(data.get(key)).append("'").append(",");
-                    }
-                }
-                sql.append(keys.deleteCharAt(keys.length() - 1)).append(") VALUES (").append(values.deleteCharAt(values.length() - 1)).append(")");
-
-                try (Statement statement = dbConnection.createStatement()) {
-                    statement.execute(sql.toString());
-                }
-            } else {
-                try (Statement statement = dbConnection.createStatement()) {
-                    sql.append("UPDATE ").append(user.getClass().getSimpleName()).append(" SET ");
-                    for (String key : data.keySet()) {
-                        if(data.get(key) != null){
-                            if(data.get(key) instanceof Boolean){
-                                sql.append(key).append(" = ").append(data.get(key)).append(" ,");
-                            } else {
-                                sql.append(key).append(" = '").append(data.get(key)).append("' ,");
-                            }
-                        }
-                    }
-                    sql.deleteCharAt(sql.length() - 1).append(" WHERE id = '").append(user.getId()).append("'");
-                    statement.execute(sql.toString());
-                }
-            }
-        } catch (SQLException e) {
-            Utils.exeption("userSave", e);
-        } finally {
-            ConnectionUtils.closeConnection(dbConnection);
-        }
-    }
-
-
-    /** add user=idWho to friends of user=idTo */
+    @Override
     public void addToFriends(Integer idWho, Integer idTo) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
@@ -180,7 +129,7 @@ public class UserDAOimpl implements UserDAO {
             ps.setInt(2, idTo);
             ps.executeUpdate();
         } catch (SQLException e) {
-            Utils.exeption("addToFriends", e);
+            Utils.exception("addToFriends", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -188,7 +137,7 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /** delete user=idWho from friends of user=idFrom */
+    @Override
     public void deleteFromFriends(Integer idWho, Integer idFrom) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
@@ -201,7 +150,7 @@ public class UserDAOimpl implements UserDAO {
             ps.setInt(2, idFrom);
             ps.executeUpdate();
         } catch (SQLException e) {
-            Utils.exeption("deleteFromFriends", e);
+            Utils.exception("deleteFromFriends", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -209,35 +158,25 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /** return count of user with specified userID friends  */
+    @Override
     public Integer getFriendsCount(Integer userID) {
-
-        System.out.println(" uid= " + userID);
-
         Connection dbConnection = null;
         PreparedStatement ps = null;
-        String sql = "SELECT COUNT(*) FROM user_user_relation WHERE user_user_relation.idWho = ? AND user_user_relation.idRelationType = 1";
-
-        /*"SELECT COUNT(*) FROM user\n" +
-         "JOIN user_user_relation ON user.id=user_user_relation.idTo\n" +
-         "JOIN relation_types ON relation_types.id  = user_user_relation.idRelationType\n" +
-         "WHERE user_user_relation.idWho = ?  AND relation_types.name = \"friend\"";*/
         Integer count = 0;
+        String friendsCountSQL = "SELECT count(*) FROM user_user_relation WHERE (idWho = ?) AND (idRelationType = ?)";
 
         try {
             dbConnection = ConnectionUtils.getConnection();
-            ps = dbConnection.prepareStatement(sql);
+            ps = dbConnection.prepareStatement(friendsCountSQL);
             ps.setInt(1, userID);
-
-            System.out.println(ps.toString());
-
-            ResultSet rs = ps.executeQuery(sql);
+            ps.setBoolean(2, false);
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 count = rs.getInt(1);
             }
             rs.close();
-        } catch (SQLException e) {
-            Utils.exeption("getFriendsCount", e);
+        } catch (Exception e) {
+            Utils.exception("getFriendsCount", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -247,23 +186,24 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /** get list of all people */
+    @Override
     public Collection<User> getAllPeople() {
         Connection dbConnection = null;
         PreparedStatement ps = null;
         Set<User> people = new HashSet<>();
-        String getPeopleSQL = "SELECT user.id, user.name, user.surname, user.currentAvatar, user.isOnline FROM user";
+        String getPeopleSQL = "SELECT " + shortFields + " FROM user WHERE user.isActive = ?";
 
         try {
             dbConnection = ConnectionUtils.getConnection();
             ps = dbConnection.prepareStatement(getPeopleSQL);
+            ps.setBoolean(1, true);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                people.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline")));
+                people.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline"), rs.getString("whereFrom")));
             }
             rs.close();
         } catch (SQLException e) {
-            Utils.exeption("getPeople", e);
+            Utils.exception("seeAllPeople", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -273,26 +213,27 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /** return list of users who are friends with user with id=userID */
+    @Override
     public Collection<User> getFriends(Integer userID) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
         Set<User> friends = new HashSet<>();
-        String getFriendsSQL ="SELECT user.id, user.name, user.surname, user.currentAvatar, user.isOnline FROM user \n" +
-                              "JOIN user_user_relation ON user.id=user_user_relation.idTo \n" +
-                              "JOIN relation_types ON relation_types.id  = user_user_relation.idRelationType\n" +
-                              "WHERE user_user_relation.idWho = ?  AND relation_types.name = \"friend\"";
+        String getFriendsSQL = "SELECT " + shortFields + " FROM user \n" +
+                "JOIN user_user_relation ON user.id=user_user_relation.idTo \n" +
+                "JOIN relation_types ON relation_types.id  = user_user_relation.idRelationType\n" +
+                "WHERE user_user_relation.idWho = ?  AND relation_types.name = \"friend\"  AND user.isActive = ?";
         try {
             dbConnection = ConnectionUtils.getConnection();
             ps = dbConnection.prepareStatement(getFriendsSQL);
             ps.setInt(1, userID);
+            ps.setBoolean(2, true);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                friends.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline")));
+                friends.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline"), rs.getString("whereFrom")));
             }
             rs.close();
         } catch (SQLException e) {
-            Utils.exeption("getFriends", e);
+            Utils.exception("getFriends", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -302,27 +243,28 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /** return list of users, who subscribed on user with id=userID */
-    public Collection<User> getSubscribers(Integer userID){
+    @Override
+    public Collection<User> getSubscribers(Integer userID) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
         Set<User> subscribers = new HashSet<>();
         String getSubscribersSQL =
-                "SELECT user.id, user.name, user.surname, user.currentAvatar, user.isOnline FROM user \n" +
+                "SELECT " + shortFields + "  FROM user \n" +
                         "JOIN user_user_relation ON user.id=user_user_relation.idWho \n" +
                         "JOIN relation_types ON relation_types.id  = user_user_relation.idRelationType\n" +
-                        "WHERE user_user_relation.idTo = ?  AND relation_types.name = \"subscriber\"";
+                        "WHERE user_user_relation.idTo = ?  AND relation_types.name = \"subscriber\"  AND user.isActive = ?";
 
         try {
             dbConnection = ConnectionUtils.getConnection();
             ps = dbConnection.prepareStatement(getSubscribersSQL);
             ps.setInt(1, userID);
+            ps.setBoolean(2, true);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                subscribers.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline")));
+                subscribers.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline"), rs.getString("whereFrom")));
             }
         } catch (SQLException e) {
-            Utils.exeption("getSubscribers", e);
+            Utils.exception("getSubscribers", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -332,26 +274,27 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /** return list of users, on who user with id=userID is subscribed */
-    public Collection<User> getSubscribed(Integer userID){
+    @Override
+    public Collection<User> getSubscribed(Integer userID) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
         Set<User> subscribed = new HashSet<>();
         String getSubscribedSQL =
-                "SELECT user.id, user.name, user.surname, user.currentAvatar, user.isOnline  FROM user \n" +
+                "SELECT " + shortFields + "  FROM user \n" +
                         "JOIN user_user_relation ON user.id=user_user_relation.idTo \n" +
                         "JOIN relation_types ON relation_types.id  = user_user_relation.idRelationType\n" +
-                        "WHERE user_user_relation.idWho = ?  AND relation_types.name = \"subscriber\"";
+                        "WHERE user_user_relation.idWho = ?  AND relation_types.name = \"subscriber\"  AND user.isActive = ?";
         try {
             dbConnection = ConnectionUtils.getConnection();
             ps = dbConnection.prepareStatement(getSubscribedSQL);
             ps.setInt(1, userID);
+            ps.setBoolean(2, true);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                subscribed.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline")));
+                subscribed.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline"), rs.getString("whereFrom")));
             }
         } catch (SQLException e) {
-            Utils.exeption("getSubscribed", e);
+            Utils.exception("getSubscribed", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -361,17 +304,8 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-
-
-
-
-
-
-
-
-
-    /* add to subscribers,*/
-    public void addToSubscriber(Integer idWho, Integer idTo) throws SQLException {
+    @Override
+    public void addToSubscriber(Integer idWho, Integer idTo) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
         String sqlAddFriend = "INSERT INTO user_user_relation (idWho, idTo, idRelationType) VALUES (?, ?, '2')";
@@ -383,7 +317,7 @@ public class UserDAOimpl implements UserDAO {
             ps.setInt(2, idTo);
             ps.executeUpdate();
         } catch (SQLException e) {
-            Utils.exeption("addToSubscriber", e);
+            Utils.exception("addToSubscriber", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -391,6 +325,7 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
+    @Override
     public void deleteSubscriber(Integer idWho, Integer idFrom) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
@@ -403,7 +338,7 @@ public class UserDAOimpl implements UserDAO {
             ps.setInt(2, idFrom);
             ps.executeUpdate();
         } catch (SQLException e) {
-            Utils.exeption("deleteSubscriber", e);
+            Utils.exception("deleteSubscriber", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -411,7 +346,7 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /**  subscribe user=idWho to user=idTo, so now idWho is subscribed on idTo */
+    @Override
     public void addToSubscribed(Integer idWho, Integer idTo) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
@@ -424,7 +359,7 @@ public class UserDAOimpl implements UserDAO {
             ps.setInt(2, idTo);
             ps.executeUpdate();
         } catch (SQLException e) {
-            Utils.exeption("addToSubscribed", e);
+            Utils.exception("addToSubscribed", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -432,7 +367,7 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /**  unsubscribe user=idWho from user=idFrom, so now idWho is not subscribed on idFrom */
+    @Override
     public void deleteSubscribed(Integer idWho, Integer idFrom) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
@@ -445,7 +380,7 @@ public class UserDAOimpl implements UserDAO {
             ps.setInt(2, idFrom);
             ps.executeUpdate();
         } catch (SQLException e) {
-            Utils.exeption("addToSubscribed", e);
+            Utils.exception("deleteSubscribed", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -453,9 +388,8 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-
-
-    public String getRelationBetweenUsers(Integer idWho, Integer idTo) throws SQLException {
+    @Override
+    public String getRelationBetweenUsers(Integer idWho, Integer idTo) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
         String sqlGetRelationBetweenUsers = "SELECT relation_types.name FROM user_user_relation " +
@@ -465,18 +399,16 @@ public class UserDAOimpl implements UserDAO {
 
         try {
             dbConnection = ConnectionUtils.getConnection();
-            dbConnection.setAutoCommit(false);
             ps = dbConnection.prepareStatement(sqlGetRelationBetweenUsers);
             ps.setInt(1, idWho);
             ps.setInt(2, idTo);
             ResultSet rs = ps.executeQuery();
-            dbConnection.commit();
             if (rs.next()) {
                 relation = rs.getString(1);
             }
             rs.close();
         } catch (SQLException e) {
-            dbConnection.rollback();
+            Utils.exception("getRelationBetweenUsers", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -486,27 +418,39 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    public static void loadAvatar(Integer userID, byte[] image) throws SQLException {
+    /*
+    @Override
+    public Gender getGender(Integer userID) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
+        ResultSet rs;
+        List<Gender> queryResult;
+        String sqlGetUserByID = "SELECT gender.id, gender.name FROM gender JOIN user ON user.gender = gender.id WHERE user.id = ?";
+        Gender gender = null;
 
         try {
-            String sqlWhoCanWrite = "UPDATE user SET user.currentAvatar = ? WHERE  user.id = ?";
             dbConnection = ConnectionUtils.getConnection();
-            ps = dbConnection.prepareStatement(sqlWhoCanWrite);
-            ps.setBytes(1, image);
-            ps.setInt(2, userID);
-            ps.executeUpdate();
+            ps = dbConnection.prepareStatement(sqlGetUserByID);
+            ps.setInt(1, userID);
+            rs = ps.executeQuery();
+            queryResult = EntityUtils.extractResult(Gender.class, rs);
+
+            if (queryResult != null) {
+                gender = queryResult.get(0);
+            }
+            rs.close();
         } catch (Exception e) {
-            System.out.println("exc in loadAvatar dao + " + e.getMessage());
+            Utils.exception("getGender", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
         }
-    }
+
+        return gender;
+    }*/
 
 
-    /** set user flag in database, OFFLINE when status = false, or ONLINE - true */
+    @Override
     public void changeUserStatus(Integer userID, Boolean status) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
@@ -519,7 +463,7 @@ public class UserDAOimpl implements UserDAO {
             ps.setInt(2, userID);
             ps.executeUpdate();
         } catch (SQLException e) {
-            Utils.exeption("changeUserStatus", e);
+            Utils.exception("changeUserStatus", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -527,15 +471,14 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /** get list of users for who user with id=userID can write.
-     * Uses at writing new message for choosing recipients */
+    @Override
     public List<User> getUsersForWhoUserCanWrite(Integer userID) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
         List<User> whoUserCanWriteList = new ArrayList<>();
 
-        String sqlWhoUserCanWrite = "SELECT user.id, user.name, user.surname, user.currentAvatar, user.isOnline FROM user\n" +
-                                    "WHERE user.id NOT IN (SELECT blacklist_write.idWho FROM blacklist_write) AND user.id != ?";
+        String sqlWhoUserCanWrite = "SELECT " + shortFields + " FROM user\n" +
+                "WHERE user.id NOT IN (SELECT blacklist_write.idWho FROM blacklist_write) AND user.id != ?";
 
         try {
             dbConnection = ConnectionUtils.getConnection();
@@ -546,7 +489,7 @@ public class UserDAOimpl implements UserDAO {
                 whoUserCanWriteList.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline")));
             }
         } catch (SQLException e) {
-            Utils.exeption("getUsersForWhoUserCanWrite",e);
+            Utils.exception("getUsersForWhoUserCanWrite", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -556,7 +499,7 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /** check is user with id=idWho can post on dashboard of user with id=idIn */
+    @Override
     public boolean canPost(Integer idWho, Integer idIn) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
@@ -574,7 +517,7 @@ public class UserDAOimpl implements UserDAO {
             }
             rs.close();
         } catch (SQLException e) {
-            Utils.exeption("canPost", e);
+            Utils.exception("canPost", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -584,11 +527,11 @@ public class UserDAOimpl implements UserDAO {
     }
 
 
-    /** check is user with id=idWho can write message to user with id=idIn */
+    @Override
     public boolean canWrite(Integer idWho, Integer idIn) {
         Connection dbConnection = null;
         PreparedStatement ps = null;
-        String canUserWriteSQL= "SELECT count(*)  FROM blacklist_write WHERE blacklist_write.idIn = ? AND blacklist_write.idWho = ?";
+        String canUserWriteSQL = "SELECT count(*)  FROM blacklist_write WHERE blacklist_write.idIn = ? AND blacklist_write.idWho = ?";
         boolean canWrite = false;
 
         try {
@@ -598,11 +541,11 @@ public class UserDAOimpl implements UserDAO {
             ps.setInt(2, idWho);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                canWrite = (rs.getInt(1)==0 && !idWho.equals(idIn));
+                canWrite = (rs.getInt(1) == 0 && !idWho.equals(idIn));
             }
             rs.close();
         } catch (SQLException e) {
-            Utils.exeption("canWrite",e);
+            Utils.exception("canWrite", e);
         } finally {
             ConnectionUtils.closeConnection(dbConnection);
             ConnectionUtils.closePreparedStatement(ps);
@@ -610,5 +553,245 @@ public class UserDAOimpl implements UserDAO {
 
         return canWrite;
     }
+
+
+    @Override
+    public boolean isInPostBlackList(Integer idWho, Integer idIn) {
+        Connection dbConnection = null;
+        PreparedStatement ps = null;
+        String canUserWriteSQL = "SELECT count(*)  FROM blacklist_post WHERE blacklist_post.idIn = ? AND blacklist_post.idWho = ?";
+        boolean isInPostBlackList = false;
+
+        try {
+            dbConnection = ConnectionUtils.getConnection();
+            ps = dbConnection.prepareStatement(canUserWriteSQL);
+            ps.setInt(1, idIn);
+            ps.setInt(2, idWho);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                isInPostBlackList = rs.getInt(1) > 0;
+            }
+            rs.close();
+        } catch (SQLException e) {
+            Utils.exception("isInPostBlackList", e);
+        } finally {
+            ConnectionUtils.closeConnection(dbConnection);
+            ConnectionUtils.closePreparedStatement(ps);
+        }
+
+        return isInPostBlackList;
+    }
+
+
+    @Override
+    public void addToPostBlackList(Integer idWho, Integer idIn) {
+        Connection dbConnection = null;
+        PreparedStatement ps = null;
+        String canUserWriteSQL = "INSERT INTO blacklist_post(idIn, idWho) VALUES (?, ?)";
+
+        try {
+            dbConnection = ConnectionUtils.getConnection();
+            ps = dbConnection.prepareStatement(canUserWriteSQL);
+            ps.setInt(1, idIn);
+            ps.setInt(2, idWho);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Utils.exception("addToPostBlackList", e);
+        } finally {
+            ConnectionUtils.closeConnection(dbConnection);
+            ConnectionUtils.closePreparedStatement(ps);
+        }
+    }
+
+
+    @Override
+    public void deleteFromPostBlackList(Integer idWho, Integer idFrom) {
+        Connection dbConnection = null;
+        PreparedStatement ps = null;
+        String canUserWriteSQL = "DELETE FROM blacklist_post WHERE blacklist_post.idIn = ? AND blacklist_post.idWho = ?";
+
+        try {
+            dbConnection = ConnectionUtils.getConnection();
+            ps = dbConnection.prepareStatement(canUserWriteSQL);
+            ps.setInt(1, idFrom);
+            ps.setInt(2, idWho);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Utils.exception("deleteFromPostBlackList", e);
+        } finally {
+            ConnectionUtils.closeConnection(dbConnection);
+            ConnectionUtils.closePreparedStatement(ps);
+        }
+    }
+
+
+    @Override
+    public boolean isInWriteBlackList(Integer idWho, Integer idIn) {
+        Connection dbConnection = null;
+        PreparedStatement ps = null;
+        String canUserWriteSQL = "SELECT count(*)  FROM blacklist_write WHERE blacklist_write.idIn = ? AND blacklist_write.idWho = ?";
+        boolean isInWriteBlackList = false;
+
+        try {
+            dbConnection = ConnectionUtils.getConnection();
+            ps = dbConnection.prepareStatement(canUserWriteSQL);
+            ps.setInt(1, idIn);
+            ps.setInt(2, idWho);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                isInWriteBlackList = (rs.getInt(1) > 0);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            Utils.exception("isInWriteBlackList", e);
+        } finally {
+            ConnectionUtils.closeConnection(dbConnection);
+            ConnectionUtils.closePreparedStatement(ps);
+        }
+
+        return isInWriteBlackList;
+    }
+
+
+    @Override
+    public void addToWriteBlackList(Integer idWho, Integer idIn) {
+        Connection dbConnection = null;
+        PreparedStatement ps = null;
+        String canUserWriteSQL = "INSERT INTO blacklist_write(idIn, idWho) VALUES (?, ?)";
+
+        try {
+            dbConnection = ConnectionUtils.getConnection();
+            ps = dbConnection.prepareStatement(canUserWriteSQL);
+            ps.setInt(1, idIn);
+            ps.setInt(2, idWho);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Utils.exception("addToWriteBlackList", e);
+        } finally {
+            ConnectionUtils.closeConnection(dbConnection);
+            ConnectionUtils.closePreparedStatement(ps);
+        }
+    }
+
+
+    @Override
+    public void deleteFromWriteBlackList(Integer idWho, Integer idFrom) {
+        Connection dbConnection = null;
+        PreparedStatement ps = null;
+        String canUserWriteSQL = "DELETE FROM blacklist_write WHERE blacklist_write.idIn = ? AND blacklist_write.idWho = ?";
+
+        try {
+            dbConnection = ConnectionUtils.getConnection();
+            ps = dbConnection.prepareStatement(canUserWriteSQL);
+            ps.setInt(1, idFrom);
+            ps.setInt(2, idWho);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Utils.exception("deleteFromWriteBlackList", e);
+        } finally {
+            ConnectionUtils.closeConnection(dbConnection);
+            ConnectionUtils.closePreparedStatement(ps);
+        }
+    }
+
+
+    @Override
+    public Collection<Gender> getGenderList() {
+        Connection dbConnection = null;
+        PreparedStatement ps = null;
+        ResultSet rs;
+        List<Gender> queryResult = null;
+        String sqlGetGenderList = "SELECT gender.id, gender.name FROM gender";
+
+        try {
+            dbConnection = ConnectionUtils.getConnection();
+            ps = dbConnection.prepareStatement(sqlGetGenderList);
+            rs = ps.executeQuery();
+            queryResult = EntityUtils.extractResult(Gender.class, rs);
+            rs.close();
+        } catch (Exception e) {
+            Utils.exception("getGenderList", e);
+        } finally {
+            ConnectionUtils.closeConnection(dbConnection);
+            ConnectionUtils.closePreparedStatement(ps);
+        }
+
+        return queryResult;
+    }
+
+
+    @Override
+    public Collection<User> searchSimple(String name, String surname) {
+        Connection dbConnection = null;
+        PreparedStatement ps = null;
+        List<User> people = new ArrayList<>();
+        String searcnNameSurname = "SELECT " + shortFields + " FROM user WHERE (name LIKE '%" + name + "%' OR user.surname  LIKE '%" + surname + "%') OR (surname LIKE '%" + name + "%' OR name  LIKE '%" + surname + "%')";
+
+        try {
+            dbConnection = ConnectionUtils.getConnection();
+            ps = dbConnection.prepareStatement(searcnNameSurname);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                people.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("surname"), rs.getBytes("currentAvatar"), rs.getBoolean("isOnline")));
+            }
+        } catch (SQLException e) {
+            Utils.exception("searchSimple", e);
+        } finally {
+            ConnectionUtils.closeConnection(dbConnection);
+            ConnectionUtils.closePreparedStatement(ps);
+        }
+
+        return people;
+    }
+
+
+    @Override
+    public void deleteUser(Integer id) {
+        Connection dbConnection = null;
+        PreparedStatement ps = null;
+        String canUserWriteSQL = "UPDATE user SET user.isActive = ? WHERE user.id = ? LIMIT 1";
+
+        try {
+            dbConnection = ConnectionUtils.getConnection();
+            ps = dbConnection.prepareStatement(canUserWriteSQL);
+            ps.setBoolean(1, false);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Utils.exception("deleteUser", e);
+        } finally {
+            ConnectionUtils.closeConnection(dbConnection);
+            ConnectionUtils.closePreparedStatement(ps);
+        }
+    }
+
+
+    @Override
+    public Boolean isMailFree(String email) {
+        Connection dbConnection = null;
+        PreparedStatement ps = null;
+        ResultSet rs;
+        String sqlGetUserByID = "SELECT COUNT(*) FROM user WHERE user.email = ?";
+        Boolean free = false;
+
+        try {
+            dbConnection = ConnectionUtils.getConnection();
+            ps = dbConnection.prepareStatement(sqlGetUserByID);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                free = rs.getInt(1) == 0;
+            }
+            rs.close();
+        } catch (SQLException e) {
+            Utils.exception("isMailFree", e);
+        } finally {
+            ConnectionUtils.closeConnection(dbConnection);
+            ConnectionUtils.closePreparedStatement(ps);
+        }
+
+        return free;
+    }
+
 
 }

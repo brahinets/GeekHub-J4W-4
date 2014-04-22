@@ -5,78 +5,62 @@
 
 <html>
 <head>
-    <title>...Number of messages...</title>
+    <title>Mail</title>
 
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap-theme.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap-theme.min.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap.min.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/global.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/user.css"/>" type="text/css">
     <link rel="stylesheet" href="<c:url value="/res/css/mail.css"/>" type="text/css">
 
-    <style>    </style>
-
     <script src="<c:url value="/res/js/jquery-2.1.0.min.js"/>"></script>
-    <script src="<c:url value="/res/js/dragAndDrop.js"/>"></script>
-<script>
+    <script>
+/*        $(function() {
+            $("#sendMessage").click(function(){
 
-    //    $(function() {
-    //        $("#sendMessage").click(function(){
-    //
-    //            var $recipient = $('input[name=recipient]').val();
-    //            var $theme = $('input[name=theme]').val();
-    //            var $content = $('textarea[name=content]').val();
-    //
-    //            console.log($recipient);
-    //            console.log($theme);
-    //            console.log($content);
-    //
-    //            if($content != null && $content != "" && $recipient != null && $recipient != ""){
-    //                var $sendMessage = $("#sendMessage");
-    //                $sendMessage.css("display", "none");
-    //
-    //                var $sendingMessage = $("#sendingMessage");
-    //                $sendingMessage.css("display","block");
-    //                $sendingMessage.css("background-image", "url(load.gif)");
-    //
-    //                var object = {};
-    //
-    //                object.recipient = $recipient;
-    //                object.theme = $theme;
-    //                object.content = $content;
-    //
-    //                $.ajax({
-    //                    url: "/message/writeForm",
-    //                    data: {
-    //                        json: JSON.stringify(object)
-    //                    },
-    //
-    //                    success: function(){
-    //                        var $resultBlock = $("#resultForm");
-    //                        var $questionsBlock = $("#messageForm");
-    //
-    //                        $resultBlock.css({display:"block"});
-    //                        $questionsBlock.css({display:"none"});
-    //                    },
-    //
-    //                    error: function(){
-    //                        console.log("error");
-    //                    }
-    //                });
-    //
-    //            } else {
-    //                console.log("some is empty");
-    //            }
-    //
-    //
-    //
-    //// width: 50px;   padding: 0 15px; background-size:cover; background-position: center;  height: 40px;
-    //
-    //
-    //
-    //        });
-    //    });
+                var $recipient = $('input[name=recipient]').val();
+                var $theme = $('input[name=theme]').val();
+                var $content = $('textarea[name=content]').val();
+
+                console.log($recipient);
+                console.log($theme);
+                console.log($content);
+
+                if($content != null && $content != "" && $recipient != null && $recipient != ""){
+                    var $save = $("#sendMessage");
+                    $save.css("display", "none");
+
+                    var $sendingMessage = $("#sendingMessage");
+                    $sendingMessage.css("display","block");
+                    $sendingMessage.css("background-image", "url(load.gif)");
+
+                    $.ajax({
+                        url: "/mail/write",
+                        method : "post",
+                        data: {
+                            recipient : $recipient,
+                            theme : $theme,
+                            content : $content
+                        },
+
+                        success: function(res){
+                            var $resultBlock = $("#resultForm");
+                            var $questionsBlock = $("#messageForm");
+
+                            $resultBlock.css({display:"block"});
+                            $questionsBlock.css({display:"none"});
+
+
+                            *//* TODO load list of mail instead mail form *//*
+                            *//*window.location = "/mail"*//*
+
+
+                        },
+
+                        error: function(){
+                            console.log("error");
+                        }
+                    });
+
+                }
+            });
+        });*/
 </script>
 </head>
 
@@ -95,7 +79,7 @@
         <!-- left nav bar end -->
 
         <div class="col-md-9 full">
-            <form action="/mail/write" method="POST" id="messageForm" class="tsc_form_contact_light frame tbar">
+            <form id="messageForm" method="post" action="<c:url value="/mail/write"/>" class="tsc_form_contact_light frame tbar">
                 <h3>New Message</h3>
 
                 <div class="row">
@@ -168,16 +152,15 @@
 
                         <c:choose>
                             <c:when test="${message.user.id != myID}">
-                                <textarea id="content" name="content" class="form-control" rows="8" placeholder="Send something (required)" required></textarea>
-
+                                <textarea id="content" name="content" class="form-control message-user" rows="8" placeholder="Send something (required)" required></textarea>
                                 <input class="blueButton right" id="sendMessage" type="submit" value="Send Message"/>
-                                <div  style="display : none; float:right;  margin-top: -10px;" id="sendingMessage"><img src="/res/img/load.gif"></div>
+                                <div  style="display : none; float:right;  margin-top: 10px;" id="sendingMessage"><img src="<c:url value="/res/img/load.gif"/>"></div>
                             </c:when>
                         </c:choose>
                     </div>
                 </div>
             </form>
-            <div id="resultForm" style="display : none; background-image: url('/res/img/load.gif')">Message sended</div>
+            <div id="resultForm" style="display : none; margin-top:5px; width:70%">Message sended</div>
         </div>
     </div>
     <!-- body end -->

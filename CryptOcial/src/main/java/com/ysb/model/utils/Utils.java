@@ -1,13 +1,7 @@
 package com.ysb.model.utils;
 
-import com.ysb.model.dao.UserDAOimpl;
-
 import javax.xml.bind.DatatypeConverter;
-import java.sql.SQLException;
 
-/**
- * Created by Yarik on 13.04.14.
- */
 public class Utils {
 
     /** converts base64 String to file
@@ -27,9 +21,9 @@ public class Utils {
 
 
     /**
-     * helper method, which useful to show exception which wew caught
+     * helper method, which useful to show exception which we caught or write to log file
      * */
-    public static void exeption(String where, Exception what) {
+    public static void exception(String where, Exception what) {
         System.out.println("Exception in " + where + " : " + what.getMessage());
     }
 }

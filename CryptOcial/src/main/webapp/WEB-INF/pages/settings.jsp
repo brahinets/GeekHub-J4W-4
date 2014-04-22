@@ -5,15 +5,8 @@
 
 <html>
 <head>
-    <title>...Number of messages...</title>
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap-theme.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap-theme.min.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/bootstrap.min.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/global.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/res/css/user.css"/>" type="text/css">
-    <script src="<c:url value="/res/js/jquery-2.1.0.min.js"/>"></script>
-    <script src="<c:url value="/res/js/dragAndDrop.js"/>"></script>
+    <title>Settings</title>
+    <script src="<c:url value="/res/js/avatarLoader.js"/>"></script>
 </head>
 
 <body onload="test.init()">
@@ -32,7 +25,7 @@
         <div class="col-md-8">
             <form class="form-horizontal" action="<c:url value="/settings"/>" method="post" enctype="multipart/form-data">
                 <div class="form-group ">
-                    <textarea style="display: none;" name="avatar" id="avatar"></textarea>
+                    <textarea style="display: none;" name="avatar" id="avatar">${user.avatar}</textarea>
                     <div class="col-sm-4 col-md-offset-1 control-label">
                         <c:choose>
                             <c:when test="${user.avatar != null}">
@@ -84,31 +77,54 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="birthdate" class="col-sm-2 control-label">Birthdate</label>
+                    <label for="birthDate" class="col-sm-2 control-label">Birthdate</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" id="birthDate" name="birthDate" value="${user.birthdate}">
+                        <input type="date" class="form-control" id="birthDate" name="birthDate" value="${user.birthDate}">
                     </div>
                 </div>
 
-                <%--<div class="form-group">--%>
-                    <%--<label for="gender" class="col-sm-2 control-label">Gender</label>--%>
-                    <%--<div class="col-sm-10">--%>
-                        <%--<select name="gender" id="gender">--%>
-                        <%--<c:forEach items="genderList" var="gender">--%>
-                            <%--<c:choose>--%>
-                                <%--<c:when test="${gender == user.gender}">--%>
-                                    <%--<option value="${gender}" selected>${gender}</option>--%>
-                                <%--</c:when>--%>
-                                <%--<c:otherwise>--%>
-                                    <%--<option value="${gender}">${gender}</option>--%>
-                                <%--</c:otherwise>--%>
-                            <%--</c:choose>--%>
-                        <%--</c:forEach>--%>
-                        <%--</select>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
+                <div class="form-group">
+                    <label for="whereFrom" class="col-sm-2 control-label">From</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="whereFrom" name="whereFrom" placeholder="From" value="${user.whereFrom}">
+                    </div>
+                </div>
 
-
+               <%-- <div class="form-group">
+                    <label for="gender" class="col-sm-2 control-label">Gender</label>
+                    <div class="col-sm-10">
+                        <select name="gender" id="gender" class="form-control">
+                        <c:forEach items="${genderList}" var="gender">
+                            <c:choose>
+                                <c:when test="${gender.id == user.gender.id}">
+                                    <option value="${gender.id}" selected>${gender.name}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="${gender.id}">${gender.name}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                        </select>
+                    </div>
+                </div>
+--%>
+                <div class="form-group">
+                    <label for="gender" class="col-sm-2 control-label">Gender</label>
+                    <div class="col-sm-10">
+                        <select name="gender" id="gender" class="form-control">
+                            <c:choose>
+                                <c:when test="${user.gender}">
+                                    <option value="1" selected>Male</option>
+                                    <option value="0">Female</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="1">Male</option>
+                                    <option value="0" selected>Female</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </select>
+                    </div>
+                </div>
 
                 <hr>
 
@@ -117,7 +133,15 @@
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
                     </p>
                 </div>
+
             </form>
+
+            <a class="btn full-width" href="/user/delete/${user.id}">
+                <button class="full-width blueButton" type="submit">
+                    <span class="buttonText">Unregister</span>
+                </button>
+            </a>
+
         </div>
     </div>
     <!-- body end -->
